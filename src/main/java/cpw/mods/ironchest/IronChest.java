@@ -96,13 +96,31 @@ public class IronChest {
     public void missingMapping(FMLMissingMappingsEvent event) {
         for (FMLMissingMappingsEvent.MissingMapping mapping : event.get()) {
             if (mapping.type == GameRegistry.Type.BLOCK) {
-                Block block = GameRegistry.findBlock("IronChest", mapping.name.replace("ilver","teel"));
-                if (block != null)
-                    mapping.remap(block);
+                System.out.println("block got a " + mapping.name);
+                switch (mapping.name) {
+                    case "IronChest:copperSilverUpgrade":
+                        mapping.remap(Block.getBlockFromName(ChestChangerType.COPPERSTEEL.itemName));
+                        break;
+                    case "IronChest:silverGoldUpgrade":
+                        mapping.remap(Block.getBlockFromName(ChestChangerType.STEELGOLD.itemName));
+                        break;
+                    default:
+                        System.out.println("No block match for " + mapping.name);
+                    }
             } else if (mapping.type == GameRegistry.Type.ITEM) {
-                Block block = GameRegistry.findBlock("IronChest", mapping.name.replace("ilver","teel"));
-                if (block != null)
-                    mapping.remap(Item.getItemFromBlock(block));
+                System.out.println("got a " + mapping.name);
+                switch (mapping.name) {
+                    case "IronChest:copperSilverUpgrade":
+                        mapping.remap(Item.getItemFromBlock(Block.getBlockFromName(ChestChangerType.COPPERSTEEL.itemName)));
+                        break;
+                    case "IronChest:silverGoldUpgrade":
+                        mapping.remap(Item.getItemFromBlock(Block.getBlockFromName(ChestChangerType.STEELGOLD.itemName)));
+                        break;
+                    default:
+                        System.out.println("No item match for " + mapping.name);
+                }
+            } else {
+                System.out.println("Hmmmm " + mapping.name);
             }
         }
     }
