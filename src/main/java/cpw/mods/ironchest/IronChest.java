@@ -94,7 +94,7 @@ public class IronChest {
 
     @Mod.EventHandler
     public void missingMapping(FMLMissingMappingsEvent event) {
-        for (FMLMissingMappingsEvent.MissingMapping mapping : event.get()) {
+        for (FMLMissingMappingsEvent.MissingMapping mapping : event.getAll()) {
             if (mapping.type == GameRegistry.Type.BLOCK) {
                 System.out.println("block got a " + mapping.name);
                 switch (mapping.name) {
