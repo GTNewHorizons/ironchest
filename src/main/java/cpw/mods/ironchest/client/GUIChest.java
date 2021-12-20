@@ -25,7 +25,7 @@ public class GUIChest extends GuiContainer {
     public enum ResourceList {
         IRON(new ResourceLocation("ironchest", "textures/gui/ironcontainer.png")),
         COPPER(new ResourceLocation("ironchest", "textures/gui/coppercontainer.png")),
-        SILVER(new ResourceLocation("ironchest", "textures/gui/silvercontainer.png")),
+        STEEL(new ResourceLocation("ironchest", "textures/gui/steelcontainer.png")),
         GOLD(new ResourceLocation("ironchest", "textures/gui/goldcontainer.png")),
         DIAMOND(new ResourceLocation("ironchest", "textures/gui/diamondcontainer.png")),
         DIRT(new ResourceLocation("ironchest", "textures/gui/dirtcontainer.png"));
@@ -39,7 +39,7 @@ public class GUIChest extends GuiContainer {
         GOLD(184, 256, ResourceList.GOLD, IronChestType.GOLD),
         DIAMOND(238, 256, ResourceList.DIAMOND, IronChestType.DIAMOND),
         COPPER(184, 184, ResourceList.COPPER, IronChestType.COPPER),
-        SILVER(184, 238, ResourceList.SILVER, IronChestType.SILVER),
+        STEEL(184, 238, ResourceList.STEEL, IronChestType.STEEL),
         CRYSTAL(238, 256, ResourceList.DIAMOND, IronChestType.CRYSTAL),
         OBSIDIAN(238, 256, ResourceList.DIAMOND, IronChestType.OBSIDIAN),
         DIRTCHEST9000(184, 184, ResourceList.DIRT, IronChestType.DIRTCHEST9000);
