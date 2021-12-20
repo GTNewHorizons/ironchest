@@ -10,7 +10,9 @@
  ******************************************************************************/
 package cpw.mods.ironchest;
 
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.oredict.OreDictionary;
@@ -25,6 +27,7 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLMissingMappingsEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -89,4 +92,18 @@ public class IronChest {
     {
     }
 
+    @Mod.EventHandler
+    public void missingMapping(FMLMissingMappingsEvent event) {
+        for (FMLMissingMappingsEvent.MissingMapping mapping : event.get()) {
+            if (mapping.type == GameRegistry.Type.BLOCK) {
+                Block block = GameRegistry.findBlock("IronChest", mapping.name.replace("ilver","teel"));
+                if (block != null)
+                    mapping.remap(block);
+            } else if (mapping.type == GameRegistry.Type.ITEM) {
+                Block block = GameRegistry.findBlock("IronChest", mapping.name.replace("ilver","teel"));
+                if (block != null)
+                    mapping.remap(Item.getItemFromBlock(block));
+            }
+        }
+    }
 }
