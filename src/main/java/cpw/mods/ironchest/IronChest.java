@@ -99,10 +99,10 @@ public class IronChest {
                 System.out.println("block got a " + mapping.name);
                 switch (mapping.name) {
                     case "IronChest:copperSilverUpgrade":
-                        mapping.remap(Block.getBlockFromName(ChestChangerType.COPPERSTEEL.itemName));
+                        mapping.remap(GameRegistry.findBlock("IronChest", "copperSteelUpgrade"));
                         break;
                     case "IronChest:silverGoldUpgrade":
-                        mapping.remap(Block.getBlockFromName(ChestChangerType.STEELGOLD.itemName));
+                        mapping.remap(GameRegistry.findBlock("IronChest", "steelGoldUpgrade"));
                         break;
                     default:
                         System.out.println("No block match for " + mapping.name);
@@ -111,10 +111,10 @@ public class IronChest {
                 System.out.println("got a " + mapping.name);
                 switch (mapping.name) {
                     case "IronChest:copperSilverUpgrade":
-                        mapping.remap(Item.getItemFromBlock(Block.getBlockFromName(ChestChangerType.COPPERSTEEL.itemName)));
+                        mapping.remap(GameRegistry.findItem("IronChest", "copperSteelUpgrade"));
                         break;
                     case "IronChest:silverGoldUpgrade":
-                        mapping.remap(Item.getItemFromBlock(Block.getBlockFromName(ChestChangerType.STEELGOLD.itemName)));
+                        mapping.remap(GameRegistry.findItem("IronChest", "steelGoldUpgrade"));
                         break;
                     default:
                         System.out.println("No item match for " + mapping.name);
