@@ -3,7 +3,7 @@ package cpw.mods.ironchest;
 import net.minecraft.item.ItemStack;
 
 public class MappableItemStackWrapper {
-    private ItemStack wrap;
+    private final ItemStack wrap;
 
     public MappableItemStackWrapper(ItemStack toWrap)
     {

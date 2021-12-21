@@ -25,7 +25,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemChestChanger extends Item {
 
-    private ChestChangerType type;
+    private final ChestChangerType type;
 
     public ItemChestChanger(ChestChangerType type)
     {
@@ -50,7 +50,7 @@ public class ItemChestChanger extends Item {
         if (world.isRemote) return false;
         TileEntity te = world.getTileEntity(X, Y, Z);
         TileEntityIronChest newchest;
-        if (te != null && te instanceof TileEntityIronChest)
+        if (te instanceof TileEntityIronChest)
         {
             TileEntityIronChest ironchest = (TileEntityIronChest) te;
             newchest = ironchest.applyUpgradeItem(this);
@@ -59,7 +59,7 @@ public class ItemChestChanger extends Item {
                 return false;
             }
         }
-        else if (te != null && te instanceof TileEntityChest)
+        else if (te instanceof TileEntityChest)
         {
             TileEntityChest tec = (TileEntityChest) te;
             if (tec.numPlayersUsing > 0)
@@ -85,10 +85,9 @@ public class ItemChestChanger extends Item {
             }
             // Clear the old block out
             world.setBlock(X, Y, Z, Blocks.air, 0, 3);
-            // Force the Chest TE to reset it's knowledge of neighbouring blocks
+            // Force the Chest TE to reset its knowledge of neighbouring blocks
             tec.updateContainingBlockInfo();
-            // Force the Chest TE to update any neighbours so they update next
-            // tick
+            // Force the Chest TE to update any neighbours, so they update next tick
             tec.checkForAdjacentChests();
             // And put in our block instead
             world.setBlock(X, Y, Z, block, newchest.getType().ordinal(), 3);

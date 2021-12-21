@@ -36,16 +36,16 @@ public enum IronChestType {
     OBSIDIAN(108, 12, false, "Obsidian Chest", "obsidianchest.png", 6, Arrays.asList("obsidian"), TileEntityObsidianChest.class, "mmmm2mmmm"),
     DIRTCHEST9000(1, 1, false, "Dirt Chest 9000", "dirtchest.png",7,Arrays.asList("dirt"), TileEntityDirtChest.class,Item.getItemFromBlock(Blocks.dirt),"mmmmCmmmm"),
     WOOD(0, 0, false, "", "", -1, Arrays.asList("plankWood"), null);
-    int size;
-    private int rowLength;
-    public String friendlyName;
-    private boolean tieredChest;
-    private String modelTexture;
-    private int textureRow;
-    public Class<? extends TileEntityIronChest> clazz;
-    private String[] recipes;
-    private ArrayList<String> matList;
-    private Item itemFilter;
+    final int size;
+    private final int rowLength;
+    public final String friendlyName;
+    private final boolean tieredChest;
+    private final String modelTexture;
+    private final int textureRow;
+    public final Class<? extends TileEntityIronChest> clazz;
+    private final String[] recipes;
+    private final ArrayList<String> matList;
+    private final Item itemFilter;
 
     IronChestType(int size, int rowLength, boolean tieredChest, String friendlyName, String modelTexture, int textureRow, List<String> mats,
             Class<? extends TileEntityIronChest> clazz, String... recipes)
@@ -86,15 +86,9 @@ public enum IronChestType {
         {
             try
             {
-                TileEntityIronChest te = values()[chesttype].clazz.newInstance();
-                return te;
+                return values()[chesttype].clazz.newInstance();
             }
-            catch (InstantiationException e)
-            {
-                // unpossible
-                e.printStackTrace();
-            }
-            catch (IllegalAccessException e)
+            catch (InstantiationException | IllegalAccessException e)
             {
                 // unpossible
                 e.printStackTrace();
@@ -120,7 +114,7 @@ public enum IronChestType {
         for (String recipe : type.recipes)
         {
             String[] recipeSplit = new String[] { recipe.substring(0, 3), recipe.substring(3, 6), recipe.substring(6, 9) };
-            Object mainMaterial = null;
+            Object mainMaterial;
             for (String mat : type.matList)
             {
                 mainMaterial = translateOreName(mat);
@@ -222,8 +216,8 @@ public enum IronChestType {
         return icons[sideMapping[side]];
     }
 
-    private static String[] sideNames = { "top", "front", "side" };
-    private static int[] sideMapping = { 0, 0, 2, 1, 2, 2, 2 };
+    private static final String[] sideNames = { "top", "front", "side" };
+    private static final int[] sideMapping = { 0, 0, 2, 1, 2, 2, 2 };
 
     public Slot makeSlot(IInventory chestInventory, int index, int x, int y)
     {

@@ -20,9 +20,9 @@ import invtweaks.api.container.ChestContainer;
 
 @ChestContainer(isLargeChest = true)
 public class ContainerIronChest extends Container {
-    private IronChestType type;
-    private EntityPlayer player;
-    private IInventory chest;
+    private final IronChestType type;
+    private final EntityPlayer player;
+    private final IInventory chest;
 
     public ContainerIronChest(IInventory playerInventory, IInventory chestInventory, IronChestType type, int xSize, int ySize)
     {

@@ -43,7 +43,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockIronChest extends BlockContainer {
 
-    private Random random;
+    private final Random random;
 
     @SideOnly(Side.CLIENT)
     private IIcon[][] icons;
@@ -117,7 +117,7 @@ public class BlockIronChest extends BlockContainer {
     {
         TileEntity te = world.getTileEntity(i, j, k);
 
-        if (te == null || !(te instanceof TileEntityIronChest))
+        if (!(te instanceof TileEntityIronChest))
         {
             return true;
         }
@@ -165,7 +165,7 @@ public class BlockIronChest extends BlockContainer {
             chestFacing = 4;
         }
         TileEntity te = world.getTileEntity(i, j, k);
-        if (te != null && te instanceof TileEntityIronChest)
+        if (te instanceof TileEntityIronChest)
         {
             TileEntityIronChest teic = (TileEntityIronChest) te;
             teic.wasPlaced(entityliving, itemStack);

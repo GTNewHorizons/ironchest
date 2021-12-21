@@ -96,7 +96,6 @@ public class IronChest {
     public void missingMapping(FMLMissingMappingsEvent event) {
         for (FMLMissingMappingsEvent.MissingMapping mapping : event.getAll()) {
             if (mapping.type == GameRegistry.Type.BLOCK) {
-                System.out.println("block got a " + mapping.name);
                 switch (mapping.name) {
                     case "IronChest:copperSilverUpgrade":
                         mapping.remap(GameRegistry.findBlock("IronChest", "copperSteelUpgrade"));
@@ -105,10 +104,8 @@ public class IronChest {
                         mapping.remap(GameRegistry.findBlock("IronChest", "steelGoldUpgrade"));
                         break;
                     default:
-                        System.out.println("No block match for " + mapping.name);
                     }
             } else if (mapping.type == GameRegistry.Type.ITEM) {
-                System.out.println("got a " + mapping.name);
                 switch (mapping.name) {
                     case "IronChest:copperSilverUpgrade":
                         mapping.remap(GameRegistry.findItem("IronChest", "copperSteelUpgrade"));
@@ -117,7 +114,6 @@ public class IronChest {
                         mapping.remap(GameRegistry.findItem("IronChest", "steelGoldUpgrade"));
                         break;
                     default:
-                        System.out.println("No item match for " + mapping.name);
                 }
             } else {
                 System.out.println("Hmmmm " + mapping.name);

@@ -30,12 +30,12 @@ public enum ChestChangerType {
     WOODCOPPER(WOOD, COPPER, "woodCopperUpgrade", "Normal chest to Copper Chest Upgrade", "mmm", "msm", "mmm"),
     DIAMONDOBSIDIAN(DIAMOND, OBSIDIAN, "diamondObsidianUpgrade", "Diamond to Obsidian Chest Upgrade", "mmm", "mGm", "mmm");
 
-    private IronChestType source;
-    private IronChestType target;
-    public String itemName;
-    public String descriptiveName;
+    private final IronChestType source;
+    private final IronChestType target;
+    public final String itemName;
+    public final String descriptiveName;
     private ItemChestChanger item;
-    private String[] recipe;
+    private final String[] recipe;
 
     private ChestChangerType(IronChestType source, IronChestType target, String itemName, String descriptiveName, String... recipe)
     {

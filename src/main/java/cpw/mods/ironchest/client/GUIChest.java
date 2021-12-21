@@ -44,10 +44,10 @@ public class GUIChest extends GuiContainer {
         OBSIDIAN(238, 256, ResourceList.DIAMOND, IronChestType.OBSIDIAN),
         DIRTCHEST9000(184, 184, ResourceList.DIRT, IronChestType.DIRTCHEST9000);
 
-        private int xSize;
-        private int ySize;
-        private ResourceList guiResourceList;
-        private IronChestType mainType;
+        private final int xSize;
+        private final int ySize;
+        private final ResourceList guiResourceList;
+        private final IronChestType mainType;
 
         private GUI(int xSize, int ySize, ResourceList guiResourceList, IronChestType mainType)
         {
@@ -74,7 +74,7 @@ public class GUIChest extends GuiContainer {
         return type.mainType.getRowLength();
     }
 
-    private GUI type;
+    private final GUI type;
 
     private GUIChest(GUI type, IInventory player, IInventory chest)
     {

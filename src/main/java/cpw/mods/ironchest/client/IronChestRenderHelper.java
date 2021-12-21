@@ -20,7 +20,7 @@ import cpw.mods.ironchest.IronChestType;
 import cpw.mods.ironchest.TileEntityIronChest;
 
 public class IronChestRenderHelper extends TileEntityRendererChestHelper {
-    private Map<Integer, TileEntityIronChest> itemRenders = Maps.newHashMap();
+    private final Map<Integer, TileEntityIronChest> itemRenders = Maps.newHashMap();
 
     public IronChestRenderHelper()
     {

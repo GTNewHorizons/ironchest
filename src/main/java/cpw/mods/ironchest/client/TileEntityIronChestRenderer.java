@@ -39,9 +39,9 @@ import cpw.mods.ironchest.TileEntityIronChest;
 
 public class TileEntityIronChestRenderer extends TileEntitySpecialRenderer {
     @SuppressWarnings("unused")
-    private static Map<MappableItemStackWrapper, Integer> renderList = new HashMap<MappableItemStackWrapper, Integer>();
+    private static final Map<MappableItemStackWrapper, Integer> renderList = new HashMap<MappableItemStackWrapper, Integer>();
 
-    private static Map<IronChestType, ResourceLocation> locations;
+    private static final Map<IronChestType, ResourceLocation> locations;
     static {
         Builder<IronChestType, ResourceLocation> builder = ImmutableMap.<IronChestType,ResourceLocation>builder();
         for (IronChestType typ : IronChestType.values()) {
@@ -49,21 +49,18 @@ public class TileEntityIronChestRenderer extends TileEntitySpecialRenderer {
         }
         locations = builder.build();
     }
-    private Random random;
+    private final Random random;
 
-    @SuppressWarnings("unused")
-    private RenderBlocks renderBlocks;
+    private final RenderItem itemRenderer;
 
-    private RenderItem itemRenderer;
-
-    private static float[][] shifts = { { 0.3F, 0.45F, 0.3F }, { 0.7F, 0.45F, 0.3F }, { 0.3F, 0.45F, 0.7F }, { 0.7F, 0.45F, 0.7F }, { 0.3F, 0.1F, 0.3F },
+    private static final float[][] shifts = { { 0.3F, 0.45F, 0.3F }, { 0.7F, 0.45F, 0.3F }, { 0.3F, 0.45F, 0.7F }, { 0.7F, 0.45F, 0.7F }, { 0.3F, 0.1F, 0.3F },
             { 0.7F, 0.1F, 0.3F }, { 0.3F, 0.1F, 0.7F }, { 0.7F, 0.1F, 0.7F }, { 0.5F, 0.32F, 0.5F }, };
 
     public TileEntityIronChestRenderer()
     {
         model = new ModelChest();
         random = new Random();
-        renderBlocks = new RenderBlocks();
+        RenderBlocks renderBlocks = new RenderBlocks();
         itemRenderer = new RenderItem() {
             @Override
             public byte getMiniBlockCount(ItemStack stack, byte original) {
@@ -91,7 +88,7 @@ public class TileEntityIronChestRenderer extends TileEntitySpecialRenderer {
         }
         int facing = 3;
         IronChestType type = tile.getType();
-        if (tile != null && tile.hasWorldObj()) {
+        if (tile.hasWorldObj()) {
             facing = tile.getFacing();
             type = tile.getType();
             int typ = tile.getWorldObj().getBlockMetadata(tile.xCoord, tile.yCoord, tile.zCoord);
@@ -177,5 +174,5 @@ public class TileEntityIronChestRenderer extends TileEntitySpecialRenderer {
         render((TileEntityIronChest) tileentity, x, y, z, partialTick);
     }
 
-    private ModelChest model;
+    private final ModelChest model;
 }
