@@ -72,7 +72,11 @@ public class IronChest {
     {
         for (IronChestType typ : IronChestType.values())
         {
-            GameRegistry.registerTileEntityWithAlternatives(typ.clazz, "IronChest."+typ.name(), typ.name());
+            if(typ.name().equals("STEEL")) {
+                GameRegistry.registerTileEntityWithAlternatives(typ.clazz, "IronChest." + typ.name(), typ.name(), "SILVER", "IronChest.SILVER");
+            } else {
+                GameRegistry.registerTileEntityWithAlternatives(typ.clazz, "IronChest." + typ.name(), typ.name());
+            }
             proxy.registerTileEntitySpecialRenderer(typ);
         }
         OreDictionary.registerOre("chestWood", Blocks.chest);
@@ -92,6 +96,7 @@ public class IronChest {
     {
     }
 
+    //cpw.mods.fml.common.registry.GameRegistry#registerTileEntityWithAlternatives
     @Mod.EventHandler
     public void missingMapping(FMLMissingMappingsEvent event) {
         for (FMLMissingMappingsEvent.MissingMapping mapping : event.getAll()) {
@@ -115,8 +120,6 @@ public class IronChest {
                         break;
                     default:
                 }
-            } else {
-                System.out.println("Hmmmm " + mapping.name);
             }
         }
     }
