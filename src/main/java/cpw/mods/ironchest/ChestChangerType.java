@@ -18,11 +18,10 @@ import static cpw.mods.ironchest.IronChestType.WOOD;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-
 import net.minecraftforge.common.config.Configuration;
 
-import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 public enum ChestChangerType {
 
@@ -72,8 +71,11 @@ public enum ChestChangerType {
             for (String targetMat : target.getMatList()) {
                 Object targetMaterial = IronChestType.translateOreName(targetMat);
                 Object sourceMaterial = IronChestType.translateOreName(sourceMat);
-                IronChestType.addRecipe(new ItemStack(item), recipe, 'm', targetMaterial, 's', sourceMaterial, 'G',
-                        Blocks.glass, 'O', Blocks.obsidian);
+                // spotless:off
+                IronChestType.addRecipe(new ItemStack(item), recipe,
+                        'm', targetMaterial, 's', sourceMaterial,
+                        'G', Blocks.glass, 'O', Blocks.obsidian);
+                // spotless:on
             }
         }
     }

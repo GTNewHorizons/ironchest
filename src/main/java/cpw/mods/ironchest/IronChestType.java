@@ -13,18 +13,16 @@ import java.util.List;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagByte;
 import net.minecraft.util.IIcon;
-
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
-import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -107,8 +105,12 @@ public enum IronChestType {
         for (IronChestType typ : values()) {
             generateRecipesForType(blockResult, previous, typ);
             ItemStack chest = new ItemStack(blockResult, 1, typ.ordinal());
-            if (typ.isValidForCreativeMode()) GameRegistry.registerCustomItemStack(typ.friendlyName, chest);
-            if (typ.tieredChest) previous = chest;
+            if (typ.isValidForCreativeMode()) {
+                GameRegistry.registerCustomItemStack(typ.friendlyName, chest);
+            }
+            if (typ.tieredChest) {
+                previous = chest;
+            }
         }
     }
 
@@ -122,6 +124,7 @@ public enum IronChestType {
             Object mainMaterial = null;
             for (String mat : type.matList) {
                 mainMaterial = translateOreName(mat);
+                // spotless:off
                 addRecipe(new ItemStack(blockResult, 1, type.ordinal()), recipeSplit,
                         'm', mainMaterial, 'P', previousTier, /* previous tier of chest */
                         'G', "blockGlass", 'C', "chestWood",
@@ -131,6 +134,7 @@ public enum IronChestType {
                         '3', new ItemStack(blockResult, 1, 3), /* Copper Chest */
                         '4', new ItemStack(blockResult, 1, 4) /* Silver Chest */
                 );
+                // spotless:on
             }
         }
     }
