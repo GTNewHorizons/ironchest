@@ -34,7 +34,7 @@ public enum IronChestType {
             "mmmmPmmmm", "mGmG4GmGm"),
     DIAMOND(108, 12, true, "Diamond Chest", "diamondchest.png", 2, Arrays.asList("gemDiamond"),
             TileEntityDiamondChest.class, "GGGmPmGGG", "GGGG4Gmmm"),
-    NETHERITE(135, 15, true, "Netherite Chest", "diamondchest.png", 2, Arrays.asList("gemDiamond"),
+    NETHERITE(135, 15, true, "Netherite Chest", "netheritechest.png", 2, Arrays.asList("gemDiamond"),
             TileEntityNetheriteChest.class, "GGGmPmGGG", "GGGG4Gmmm"),
     COPPER(45, 9, false, "Copper Chest", "copperchest.png", 3, Arrays.asList("ingotCopper"),
             TileEntityCopperChest.class, "mmmmCmmmm"),
