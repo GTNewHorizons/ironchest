@@ -41,6 +41,7 @@ public class GUIChest extends GuiContainer {
         IRON(184, 202, ResourceList.IRON, IronChestType.IRON),
         GOLD(184, 256, ResourceList.GOLD, IronChestType.GOLD),
         DIAMOND(238, 256, ResourceList.DIAMOND, IronChestType.DIAMOND),
+        NETHERITE(292, 256, ResourceList.DIAMOND, IronChestType.NETHERITE),
         COPPER(184, 184, ResourceList.COPPER, IronChestType.COPPER),
         STEEL(184, 238, ResourceList.STEEL, IronChestType.STEEL),
         CRYSTAL(238, 256, ResourceList.DIAMOND, IronChestType.CRYSTAL),
