@@ -134,7 +134,9 @@ public enum IronChestType {
                         '1', new ItemStack(blockResult, 1, 1), /* Gold Chest */
                         '2', new ItemStack(blockResult, 1, 2), /* Diamond Chest */
                         '3', new ItemStack(blockResult, 1, 3), /* Copper Chest */
-                        '4', new ItemStack(blockResult, 1, 4) /* Silver Chest */
+                        '4', new ItemStack(blockResult, 1, 4), /* Silver Chest */
+                        '5', new ItemStack(blockResult, 1, 5)  /* Netherite Chest */
+
                 );
                 // spotless:on
             }
