@@ -12,6 +12,7 @@ import static cpw.mods.ironchest.IronChestType.CRYSTAL;
 import static cpw.mods.ironchest.IronChestType.DIAMOND;
 import static cpw.mods.ironchest.IronChestType.GOLD;
 import static cpw.mods.ironchest.IronChestType.IRON;
+import static cpw.mods.ironchest.IronChestType.NETHERITE;
 import static cpw.mods.ironchest.IronChestType.OBSIDIAN;
 import static cpw.mods.ironchest.IronChestType.STEEL;
 import static cpw.mods.ironchest.IronChestType.WOOD;
@@ -34,7 +35,9 @@ public enum ChestChangerType {
     WOODIRON(WOOD, IRON, "woodIronUpgrade", "Normal chest to Iron Chest Upgrade", "mmm", "msm", "mmm"),
     WOODCOPPER(WOOD, COPPER, "woodCopperUpgrade", "Normal chest to Copper Chest Upgrade", "mmm", "msm", "mmm"),
     DIAMONDOBSIDIAN(DIAMOND, OBSIDIAN, "diamondObsidianUpgrade", "Diamond to Obsidian Chest Upgrade", "mmm", "mGm",
-            "mmm");
+            "mmm"),
+    DIAMONDNETHERITE(DIAMOND, NETHERITE, "diamondNetheriteUpgrade", "Diamond to Netherite Chest Upgrade", "OOO", "msm",
+            "OOO");
 
     private final IronChestType source;
     private final IronChestType target;

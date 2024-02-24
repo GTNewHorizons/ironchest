@@ -7,6 +7,7 @@
  ******************************************************************************/
 package cpw.mods.ironchest;
 
+import cpw.mods.fml.common.Loader;
 import net.minecraft.init.Blocks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
@@ -74,6 +75,10 @@ public class IronChest {
                         typ.name(),
                         "SILVER",
                         "IronChest.SILVER");
+            } else if (typ.name().equals("NETHERITE")) {
+                if (!Loader.isModLoaded("dreamcraft")) {
+                    GameRegistry.registerTileEntityWithAlternatives(typ.clazz, "IronChest." + typ.name(), typ.name());
+                }
             } else {
                 GameRegistry.registerTileEntityWithAlternatives(typ.clazz, "IronChest." + typ.name(), typ.name());
             }

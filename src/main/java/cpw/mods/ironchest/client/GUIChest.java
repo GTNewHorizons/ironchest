@@ -8,6 +8,7 @@
 package cpw.mods.ironchest.client;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
@@ -27,6 +28,7 @@ public class GUIChest extends GuiContainer {
         STEEL(new ResourceLocation("ironchest", "textures/gui/silvercontainer.png")),
         GOLD(new ResourceLocation("ironchest", "textures/gui/goldcontainer.png")),
         DIAMOND(new ResourceLocation("ironchest", "textures/gui/diamondcontainer.png")),
+        NETHERITE(new ResourceLocation("ironchest", "textures/gui/netheritecontainer.png")),
         DIRT(new ResourceLocation("ironchest", "textures/gui/dirtcontainer.png"));
 
         public final ResourceLocation location;
@@ -41,6 +43,7 @@ public class GUIChest extends GuiContainer {
         IRON(184, 202, ResourceList.IRON, IronChestType.IRON),
         GOLD(184, 256, ResourceList.GOLD, IronChestType.GOLD),
         DIAMOND(238, 256, ResourceList.DIAMOND, IronChestType.DIAMOND),
+        NETHERITE(292, 256, ResourceList.NETHERITE, IronChestType.NETHERITE),
         COPPER(184, 184, ResourceList.COPPER, IronChestType.COPPER),
         STEEL(184, 238, ResourceList.STEEL, IronChestType.STEEL),
         CRYSTAL(238, 256, ResourceList.DIAMOND, IronChestType.CRYSTAL),
@@ -89,8 +92,21 @@ public class GUIChest extends GuiContainer {
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         // new "bind tex"
         this.mc.getTextureManager().bindTexture(type.guiResourceList.location);
+
+        if (type == GUI.NETHERITE) {
+            final Tessellator tessellator = Tessellator.instance;
+            tessellator.startDrawingQuads();
+            tessellator.addVertexWithUV(guiLeft, guiTop, 0, 0.0, 0.0);
+            tessellator.addVertexWithUV(guiLeft, guiTop + ySize, 0, 0.0, 1.0);
+            tessellator.addVertexWithUV(guiLeft + xSize, guiTop + ySize, 0, 1.0, 1.0);
+            tessellator.addVertexWithUV(guiLeft + xSize, guiTop, 0, 1.0, 0.0);
+            tessellator.draw();
+            return;
+        }
+
         int x = (width - xSize) / 2;
         int y = (height - ySize) / 2;
         drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
+
     }
 }

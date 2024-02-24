@@ -34,6 +34,8 @@ public enum IronChestType {
             "mmmmPmmmm", "mGmG4GmGm"),
     DIAMOND(108, 12, true, "Diamond Chest", "diamondchest.png", 2, Arrays.asList("gemDiamond"),
             TileEntityDiamondChest.class, "GGGmPmGGG", "GGGG4Gmmm"),
+    NETHERITE(135, 15, true, "Netherite Chest", "netheritechest.png", 2, Arrays.asList("ingotNetherite"),
+            TileEntityNetheriteChest.class, "OOOmPmOOO", "OOOO4Ommm"),
     COPPER(45, 9, false, "Copper Chest", "copperchest.png", 3, Arrays.asList("ingotCopper"),
             TileEntityCopperChest.class, "mmmmCmmmm"),
     STEEL(72, 9, false, "Steel Chest", "silverchest.png", 4, Arrays.asList("ingotSteel"), TileEntitySteelChest.class,
@@ -127,12 +129,14 @@ public enum IronChestType {
                 // spotless:off
                 addRecipe(new ItemStack(blockResult, 1, type.ordinal()), recipeSplit,
                         'm', mainMaterial, 'P', previousTier, /* previous tier of chest */
-                        'G', "blockGlass", 'C', "chestWood",
+                        'G', "blockGlass", 'C', "chestWood", 'O', Blocks.obsidian,
                         '0', new ItemStack(blockResult, 1, 0), /* Iron Chest */
                         '1', new ItemStack(blockResult, 1, 1), /* Gold Chest */
                         '2', new ItemStack(blockResult, 1, 2), /* Diamond Chest */
                         '3', new ItemStack(blockResult, 1, 3), /* Copper Chest */
-                        '4', new ItemStack(blockResult, 1, 4) /* Silver Chest */
+                        '4', new ItemStack(blockResult, 1, 4), /* Silver Chest */
+                        '5', new ItemStack(blockResult, 1, 5)  /* Netherite Chest */
+
                 );
                 // spotless:on
             }
