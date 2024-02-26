@@ -3,6 +3,7 @@ tile.ironchest:GOLD.name=Baú de Ouro
 tile.ironchest:DIAMOND.name=Baú de Diamante
 tile.ironchest:COPPER.name=Baú de Cobre
 tile.ironchest:STEEL.name=Baú de Prata
+tile.ironchest:SILVER.name=Baú de Prata
 tile.ironchest:CRYSTAL.name=Baú de Cristal
 tile.ironchest:OBSIDIAN.name=Baú de Obsidiana
 
@@ -10,6 +11,8 @@ item.ironchest:IRONGOLD.name=Melhoria de Baú de Ferro para Ouro
 item.ironchest:GOLDDIAMOND.name=Melhoria de Baú de Ouro para Diamante
 item.ironchest:COPPERSTEEL.name=Melhoria de Baú de Cobre para Prata
 item.ironchest:STEELGOLD.name=Melhoria de Baú de Prata para Ouro
+item.ironchest:COPPERSILVER.name=Melhoria de Baú de Cobre para Prata
+item.ironchest:SILVERGOLD.name=Melhoria de Baú de Prata para Ouro
 item.ironchest:COPPERIRON.name=Melhoria de Baú de Cobre para Ferro
 item.ironchest:DIAMONDCRYSTAL.name=Melhoria de Baú de Diamante para Cristal
 item.ironchest:WOODIRON.name=Melhoria de Baú de Madeira para Ferro

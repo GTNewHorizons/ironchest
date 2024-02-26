@@ -29,6 +29,7 @@ public class GUIChest extends GuiContainer {
         GOLD(new ResourceLocation("ironchest", "textures/gui/goldcontainer.png")),
         DIAMOND(new ResourceLocation("ironchest", "textures/gui/diamondcontainer.png")),
         NETHERITE(new ResourceLocation("ironchest", "textures/gui/netheritecontainer.png")),
+        DARKSTEEL(new ResourceLocation("ironchest", "textures/gui/netheritecontainer.png")),
         DIRT(new ResourceLocation("ironchest", "textures/gui/dirtcontainer.png"));
 
         public final ResourceLocation location;
@@ -44,6 +45,7 @@ public class GUIChest extends GuiContainer {
         GOLD(184, 256, ResourceList.GOLD, IronChestType.GOLD),
         DIAMOND(238, 256, ResourceList.DIAMOND, IronChestType.DIAMOND),
         NETHERITE(292, 256, ResourceList.NETHERITE, IronChestType.NETHERITE),
+        DARKSTEEL(292, 256, ResourceList.DARKSTEEL, IronChestType.DARKSTEEL),
         COPPER(184, 184, ResourceList.COPPER, IronChestType.COPPER),
         STEEL(184, 238, ResourceList.STEEL, IronChestType.STEEL),
         CRYSTAL(238, 256, ResourceList.DIAMOND, IronChestType.CRYSTAL),
@@ -93,7 +95,7 @@ public class GUIChest extends GuiContainer {
         // new "bind tex"
         this.mc.getTextureManager().bindTexture(type.guiResourceList.location);
 
-        if (type == GUI.NETHERITE) {
+        if (type == GUI.NETHERITE || type == GUI.DARKSTEEL) {
             final Tessellator tessellator = Tessellator.instance;
             tessellator.startDrawingQuads();
             tessellator.addVertexWithUV(guiLeft, guiTop, 0, 0.0, 0.0);

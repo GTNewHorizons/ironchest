@@ -7,7 +7,6 @@
  ******************************************************************************/
 package cpw.mods.ironchest;
 
-import cpw.mods.fml.common.Loader;
 import net.minecraft.init.Blocks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
@@ -44,17 +43,19 @@ public class IronChest {
     public static final String VERSION = "GRADLETOKEN_VERSION";
     public static boolean TRANSPARENT_RENDER_INSIDE = true;
     public static double TRANSPARENT_RENDER_DISTANCE = 128D;
+    public static boolean ENABLE_STEEL_CHESTS = true;
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());
         try {
             cfg.load();
-            ChestChangerType.buildItems(cfg);
             CACHE_RENDER = cfg.get(Configuration.CATEGORY_GENERAL, "cacheRenderingInformation", true).getBoolean(true);
             OCELOTS_SITONCHESTS = cfg.get(Configuration.CATEGORY_GENERAL, "ocelotsSitOnChests", true).getBoolean(true);
             TRANSPARENT_RENDER_INSIDE = cfg.get("general", "transparentRenderInside", true).getBoolean(true);
             TRANSPARENT_RENDER_DISTANCE = cfg.get("general", "transparentRenderDistance", 128D).getDouble(128D);
+            ENABLE_STEEL_CHESTS = cfg.get("general", "enableSteelChests", true).getBoolean(true);
+            ChestChangerType.buildItems(cfg);
         } catch (Exception e) {
             FMLLog.log(Level.ERROR, e, "IronChest has a problem loading its configuration");
         } finally {
@@ -68,17 +69,18 @@ public class IronChest {
     @EventHandler
     public void load(FMLInitializationEvent evt) {
         for (IronChestType typ : IronChestType.values()) {
-            if (typ.name().equals("STEEL")) {
+            if (typ.name().equals("STEEL") && ENABLE_STEEL_CHESTS) {
                 GameRegistry.registerTileEntityWithAlternatives(
                         typ.clazz,
                         "IronChest." + typ.name(),
                         typ.name(),
                         "SILVER",
                         "IronChest.SILVER");
-            } else if (typ.name().equals("NETHERITE")) {
-                if (!Loader.isModLoaded("dreamcraft")) {
-                    GameRegistry.registerTileEntityWithAlternatives(typ.clazz, "IronChest." + typ.name(), typ.name());
+            } else if (typ.name().equals("SILVER")) {
+                if (ENABLE_STEEL_CHESTS) {
+                    continue;
                 }
+                GameRegistry.registerTileEntityWithAlternatives(typ.clazz, "IronChest." + typ.name(), typ.name());
             } else {
                 GameRegistry.registerTileEntityWithAlternatives(typ.clazz, "IronChest." + typ.name(), typ.name());
             }
@@ -103,25 +105,27 @@ public class IronChest {
     @Mod.EventHandler
     public void missingMapping(FMLMissingMappingsEvent event) {
         for (FMLMissingMappingsEvent.MissingMapping mapping : event.getAll()) {
-            if (mapping.type == GameRegistry.Type.BLOCK) {
-                switch (mapping.name) {
-                    case "IronChest:copperSilverUpgrade":
-                        mapping.remap(GameRegistry.findBlock("IronChest", "copperSteelUpgrade"));
-                        break;
-                    case "IronChest:silverGoldUpgrade":
-                        mapping.remap(GameRegistry.findBlock("IronChest", "steelGoldUpgrade"));
-                        break;
-                    default:
-                }
-            } else if (mapping.type == GameRegistry.Type.ITEM) {
-                switch (mapping.name) {
-                    case "IronChest:copperSilverUpgrade":
-                        mapping.remap(GameRegistry.findItem("IronChest", "copperSteelUpgrade"));
-                        break;
-                    case "IronChest:silverGoldUpgrade":
-                        mapping.remap(GameRegistry.findItem("IronChest", "steelGoldUpgrade"));
-                        break;
-                    default:
+            if (ENABLE_STEEL_CHESTS) {
+                if (mapping.type == GameRegistry.Type.BLOCK) {
+                    switch (mapping.name) {
+                        case "IronChest:copperSilverUpgrade":
+                            mapping.remap(GameRegistry.findBlock("IronChest", "copperSteelUpgrade"));
+                            break;
+                        case "IronChest:silverGoldUpgrade":
+                            mapping.remap(GameRegistry.findBlock("IronChest", "steelGoldUpgrade"));
+                            break;
+                        default:
+                    }
+                } else if (mapping.type == GameRegistry.Type.ITEM) {
+                    switch (mapping.name) {
+                        case "IronChest:copperSilverUpgrade":
+                            mapping.remap(GameRegistry.findItem("IronChest", "copperSteelUpgrade"));
+                            break;
+                        case "IronChest:silverGoldUpgrade":
+                            mapping.remap(GameRegistry.findItem("IronChest", "steelGoldUpgrade"));
+                            break;
+                        default:
+                    }
                 }
             }
         }
