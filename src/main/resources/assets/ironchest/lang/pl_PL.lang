@@ -3,6 +3,7 @@ tile.ironchest:GOLD.name=Złota skrzynia
 tile.ironchest:DIAMOND.name=Diamentowa skrzynia
 tile.ironchest:COPPER.name=Miedziana skrzynia
 tile.ironchest:STEEL.name=Stalowa skrzynia
+tile.ironchest:SILVER.name=Srebrna skrzyniaz
 tile.ironchest:CRYSTAL.name=Kryształowa skrzynia
 tile.ironchest:OBSIDIAN.name=Obsydianowa skrzynia
 
@@ -10,6 +11,8 @@ item.ironchest:IRONGOLD.name=Ulepszenie żelaznej skrzyni na złotą
 item.ironchest:GOLDDIAMOND.name=Ulepszenie złotej skrzyni na diamentową
 item.ironchest:COPPERSTEEL.name=Ulepszenie miedzianej skrzyni na stalową
 item.ironchest:STEELGOLD.name=Ulepszenie stalowej skrzyni na złotą
+item.ironchest:COPPERSILVER.name=Ulepszenie miedzianej skrzyni na srebrną
+item.ironchest:SILVERGOLD.name=Ulepszenie srebrnej skrzyni na złotą
 item.ironchest:COPPERIRON.name=Ulepszenie miedzianej skrzyni na żelazną
 item.ironchest:DIAMONDCRYSTAL.name=Ulepszenie diamentowej skrzyni na kryształową
 item.ironchest:WOODIRON.name=Ulepszenie drewnianej skrzyni na żelazną

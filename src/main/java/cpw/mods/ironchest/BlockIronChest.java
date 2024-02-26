@@ -7,6 +7,8 @@
  ******************************************************************************/
 package cpw.mods.ironchest;
 
+import static cpw.mods.ironchest.IronChest.ENABLE_STEEL_CHESTS;
+import static cpw.mods.ironchest.IronChestType.NETHERITE;
 import static net.minecraftforge.common.util.ForgeDirection.DOWN;
 import static net.minecraftforge.common.util.ForgeDirection.UP;
 
@@ -36,6 +38,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 import com.google.common.collect.Lists;
 
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -213,9 +216,38 @@ public class BlockIronChest extends BlockContainer {
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(Item par1, CreativeTabs par2CreativeTabs, List par3List) {
         for (IronChestType type : IronChestType.values()) {
-            if (type.isValidForCreativeMode()) {
-                par3List.add(new ItemStack(this, 1, type.ordinal()));
+
+            if (!type.isValidForCreativeMode()) {
+                continue;
             }
+            switch (type) {
+                case STEEL:
+                    if (ENABLE_STEEL_CHESTS) {
+                        par3List.add(new ItemStack(this, 1, type.ordinal()));
+                    }
+                    break;
+                case SILVER:
+                    if (ENABLE_STEEL_CHESTS) {
+                        continue;
+                    }
+                    par3List.add(new ItemStack(this, 1, type.ordinal()));
+                    break;
+                case DARKSTEEL:
+                    if (Loader.isModLoaded("dreamcraft")) {
+                        par3List.add(new ItemStack(this, 1, type.ordinal()));
+                    }
+                    break;
+                case NETHERITE:
+                    if (Loader.isModLoaded("dreamcraft")) {
+                        continue;
+                    }
+                    par3List.add(new ItemStack(this, 1, type.ordinal()));
+                    break;
+                default:
+                    par3List.add(new ItemStack(this, 1, type.ordinal()));
+                    break;
+            }
+
         }
     }
 
