@@ -190,7 +190,7 @@ public enum IronChestType {
     }
 
     public boolean isExplosionResistant() {
-        return this == OBSIDIAN;
+        return this == OBSIDIAN || this == NETHERITE;
     }
 
     @SideOnly(Side.CLIENT)
