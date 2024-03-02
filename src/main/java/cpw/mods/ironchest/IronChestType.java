@@ -47,7 +47,7 @@ public enum IronChestType {
     SILVER(72, 9, false, "Silver Chest", "silverchest.png", 4, Arrays.asList("ingotSilver"),
             TileEntitySilverChest.class, "mmmm3mmmm", "mGmG0GmGm"),
     NETHERITE(135, 15, true, "Netherite Chest", "netheritechest.png", 2, Arrays.asList("ingotNetherite"),
-            TileEntityNetheriteChest.class, "OOOmPmOOO", "OOOO4Ommm"),
+            TileEntityNetheriteChest.class, "OOOmPmOOO", "OOOO6Ommm"),
     DARKSTEEL(135, 15, true, "Dark Steel Chest", "darksteelchest.png", 2, Arrays.asList("ingotNetherite"),
             TileEntityDarkSteelChest.class, "OOOmPmOOO", "OOOO4Ommm"),
     WOOD(0, 0, false, "", "", -1, Arrays.asList("plankWood"), null);
@@ -139,7 +139,8 @@ public enum IronChestType {
                         '2', new ItemStack(blockResult, 1, 2), /* Diamond Chest */
                         '3', new ItemStack(blockResult, 1, 3), /* Copper Chest */
                         '4', new ItemStack(blockResult, 1, 4), /* Silver Chest */
-                        '5', new ItemStack(blockResult, 1, 5)  /* Netherite Chest */
+                        '5', new ItemStack(blockResult, 1, 10), /* Netherite Chest */
+                        '6', new ItemStack(blockResult, 1, 7)  /* Obsidian Chest */
 
                 );
                 // spotless:on
