@@ -32,14 +32,14 @@ public enum IronChestType {
 
     IRON(54, 9, 2, "Iron Chest", "ironchest.png", 0, Arrays.asList("ingotIron", "ingotRefinedIron"),
             TileEntityIronChest.class, null, "mGmGPGmGm", "mmmmPmmmm"),
-    GOLD(81, 9, 4, "Gold Chest", "goldchest.png", 1, Arrays.asList("ingotGold"), TileEntityGoldChest.class,
-            null, "mGmGPGmGm", "mmmmPmmmm"),
+    GOLD(81, 9, 4, "Gold Chest", "goldchest.png", 1, Arrays.asList("ingotGold"), TileEntityGoldChest.class, null,
+            "mGmGPGmGm", "mmmmPmmmm"),
     DIAMOND(108, 12, 5, "Diamond Chest", "diamondchest.png", 2, Arrays.asList("gemDiamond"),
             TileEntityDiamondChest.class, null, "GGGmPmGGG", "GGGGPGmmm"),
-    COPPER(45, 9, 1, "Copper Chest", "copperchest.png", 3, Arrays.asList("ingotCopper"),
-            TileEntityCopperChest.class, null, "mmmmPmmmm", "mGmGPGmGm"),
-    STEEL(72, 9, 3, "Steel Chest", "silverchest.png", 4, Arrays.asList("ingotSteel"), TileEntitySteelChest.class,
-            null, "mGmGPGmGm", "mmmmPmmmm"),
+    COPPER(45, 9, 1, "Copper Chest", "copperchest.png", 3, Arrays.asList("ingotCopper"), TileEntityCopperChest.class,
+            null, "mmmmPmmmm", "mGmGPGmGm"),
+    STEEL(72, 9, 3, "Steel Chest", "silverchest.png", 4, Arrays.asList("ingotSteel"), TileEntitySteelChest.class, null,
+            "mGmGPGmGm", "mmmmPmmmm"),
     CRYSTAL(108, 12, 5, "Crystal Chest", "crystalchest.png", 5, Arrays.asList("blockGlass"),
             TileEntityCrystalChest.class, "mmmmPmmmm", null, null),
     OBSIDIAN(108, 12, 5, "Obsidian Chest", "obsidianchest.png", 6, Arrays.asList("obsidian"),
@@ -50,8 +50,8 @@ public enum IronChestType {
             TileEntityNetheriteChest.class, null, "OOOmPmOOO", "OOOOPOmmm"),
     DARKSTEEL(135, 15, 6, "Dark Steel Chest", "darksteelchest.png", 2, Arrays.asList("ingotDarkSteel"),
             TileEntityDarkSteelChest.class, null, "OOOmPmOOO", "OOOOPOmmm"),
-    SILVER(72, 9, 3, "Silver Chest", "silverchest.png", 4, Arrays.asList("ingotSilver"),
-            TileEntitySilverChest.class, null, "mGmGPGmGm", "mmmmPmmmm"),
+    SILVER(72, 9, 3, "Silver Chest", "silverchest.png", 4, Arrays.asList("ingotSilver"), TileEntitySilverChest.class,
+            null, "mGmGPGmGm", "mmmmPmmmm"),
     WOOD(0, 0, -1, "", "", -1, Arrays.asList("plankWood"), null, null, null, null);
 
     final int size;
@@ -67,15 +67,27 @@ public enum IronChestType {
     private final ArrayList<String> matList;
     private final Item itemFilter;
 
-    IronChestType(int size, int rowLength, int tier, String friendlyName, String modelTexture,
-            int textureRow, List<String> mats, Class<? extends TileEntityIronChest> clazz,
-            String recipeDirect, String recipeUpgradeOneTier, String recipeUpgradeTwoTiers) {
-        this(size, rowLength, tier, friendlyName, modelTexture, textureRow, mats, clazz, (Item) null, recipeDirect, recipeUpgradeOneTier, recipeUpgradeTwoTiers);
+    IronChestType(int size, int rowLength, int tier, String friendlyName, String modelTexture, int textureRow,
+            List<String> mats, Class<? extends TileEntityIronChest> clazz, String recipeDirect,
+            String recipeUpgradeOneTier, String recipeUpgradeTwoTiers) {
+        this(
+                size,
+                rowLength,
+                tier,
+                friendlyName,
+                modelTexture,
+                textureRow,
+                mats,
+                clazz,
+                (Item) null,
+                recipeDirect,
+                recipeUpgradeOneTier,
+                recipeUpgradeTwoTiers);
     }
 
-    IronChestType(int size, int rowLength, int tier, String friendlyName, String modelTexture,
-            int textureRow, List<String> mats, Class<? extends TileEntityIronChest> clazz, Item itemFilter,
-            String recipeDirect, String recipeUpgradeOneTier, String recipeUpgradeTwoTiers) {
+    IronChestType(int size, int rowLength, int tier, String friendlyName, String modelTexture, int textureRow,
+            List<String> mats, Class<? extends TileEntityIronChest> clazz, Item itemFilter, String recipeDirect,
+            String recipeUpgradeOneTier, String recipeUpgradeTwoTiers) {
         this.size = size;
         this.rowLength = rowLength;
         this.tier = tier;
@@ -132,8 +144,9 @@ public enum IronChestType {
 
     public static IronChestType[] getAllSortedByTier() {
         IronChestType[] vals = getAll();
-        
+
         Arrays.sort(vals, new Comparator<IronChestType>() {
+
             public int compare(IronChestType a, IronChestType b) {
                 return a.tier.compareTo(b.tier);
             }
@@ -225,11 +238,7 @@ public enum IronChestType {
     }
 
     public static String[] getRecipeSplitted(String recipe) {
-        return new String[] {
-            recipe.substring(0, 3),
-            recipe.substring(3, 6),
-            recipe.substring(6, 9)
-        };
+        return new String[] { recipe.substring(0, 3), recipe.substring(3, 6), recipe.substring(6, 9) };
     }
 
     public static Object translateOreName(String mat) {
