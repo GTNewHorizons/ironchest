@@ -30,7 +30,7 @@ public enum ChestChangerType {
     WOODCOPPER(WOOD, COPPER, "woodCopperUpgrade", "Normal chest to Copper Chest Upgrade", "mmm", "msm", "mmm"),
     DIAMONDOBSIDIAN(DIAMOND, OBSIDIAN, "diamondObsidianUpgrade", "Diamond to Obsidian Chest Upgrade", "mmm", "mGm",
             "mmm"),
-    DIAMONDNETHERITE(OBSIDIAN, NETHERITE, "obsidianNetheriteUpgrade", "Diamond to Netherite Chest Upgrade", "OOO",
+    OBSIDIANNETHERITE(OBSIDIAN, NETHERITE, "obsidianNetheriteUpgrade", "Obsidian to Netherite Chest Upgrade", "OOO",
             "msm", "OOO"),
     DIAMONDDARKSTEEL(DIAMOND, DARKSTEEL, "diamondDarkSteelUpgrade", "Diamond to Dark Steel Chest Upgrade", "OOO", "msm",
             "OOO");
@@ -98,7 +98,7 @@ public enum ChestChangerType {
                         type.buildItem(cfg);
                     }
                 }
-                case DIAMONDNETHERITE -> {
+                case OBSIDIANNETHERITE -> {
                     if (IronChest.isGTNHLoaded) {
                         continue;
                     }

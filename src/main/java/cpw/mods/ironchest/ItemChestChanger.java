@@ -36,7 +36,7 @@ public class ItemChestChanger extends Item {
     @Override
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister par1IconRegister) {
-        this.itemIcon = par1IconRegister.registerIcon("ironchest:" + type.itemName.replace("teel", "ilver"));
+        this.itemIcon = par1IconRegister.registerIcon("ironchest:" + type.itemName);
     }
 
     @Override

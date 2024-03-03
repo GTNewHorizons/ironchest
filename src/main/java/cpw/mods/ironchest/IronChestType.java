@@ -108,6 +108,10 @@ public enum IronChestType {
     public static void registerBlocksAndRecipes(BlockIronChest blockResult) {
         Object previous = "chestWood";
         for (IronChestType typ : values()) {
+            if ((typ == NETHERITE) && IronChest.isGTNHLoaded) {
+                continue;
+            }
+
             generateRecipesForType(blockResult, previous, typ);
             ItemStack chest = new ItemStack(blockResult, 1, typ.ordinal());
             if (typ.isValidForCreativeMode()) {
