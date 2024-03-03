@@ -167,18 +167,16 @@ public enum IronChestType {
             }
         }
 
-        for (IronChestType typ : vals) {
-            if (typ.isEnabled()) {
-                generateRecipesForType(typ);
+        if (!IronChest.isGTNHLoaded) {
+            for (IronChestType typ : vals) {
+                if (typ.isEnabled()) {
+                    generateRecipesForType(typ);
+                }
             }
         }
     }
 
     public static void generateRecipesForType(IronChestType typ) {
-        if (IronChest.isGTNHLoaded) {
-            return;
-        }
-
         ItemStack chest = getRegistredChest(typ);
 
         for (String mat : typ.matList) {
