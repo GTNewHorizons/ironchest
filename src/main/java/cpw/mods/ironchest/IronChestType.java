@@ -9,6 +9,7 @@ package cpw.mods.ironchest;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -27,34 +28,34 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public enum IronChestType {
 
-    IRON(54, 9, true, "Iron Chest", "ironchest.png", 0, Arrays.asList("ingotIron", "ingotRefinedIron"),
+    IRON(54, 9, 2, "Iron Chest", "ironchest.png", 0, Arrays.asList("ingotIron", "ingotRefinedIron"),
             TileEntityIronChest.class, "mmmmPmmmm", "mGmG3GmGm"),
-    GOLD(81, 9, true, "Gold Chest", "goldchest.png", 1, Arrays.asList("ingotGold"), TileEntityGoldChest.class,
+    GOLD(81, 9, 4, "Gold Chest", "goldchest.png", 1, Arrays.asList("ingotGold"), TileEntityGoldChest.class,
             "mmmmPmmmm", "mGmG4GmGm"),
-    DIAMOND(108, 12, true, "Diamond Chest", "diamondchest.png", 2, Arrays.asList("gemDiamond"),
+    DIAMOND(108, 12, 5, "Diamond Chest", "diamondchest.png", 2, Arrays.asList("gemDiamond"),
             TileEntityDiamondChest.class, "GGGmPmGGG", "GGGG4Gmmm"),
-    COPPER(45, 9, false, "Copper Chest", "copperchest.png", 3, Arrays.asList("ingotCopper"),
+    COPPER(45, 9, 1, "Copper Chest", "copperchest.png", 3, Arrays.asList("ingotCopper"),
             TileEntityCopperChest.class, "mmmmCmmmm"),
-    STEEL(72, 9, false, "Steel Chest", "silverchest.png", 4, Arrays.asList("ingotSteel"), TileEntitySteelChest.class,
+    STEEL(72, 9, 3, "Steel Chest", "silverchest.png", 4, Arrays.asList("ingotSteel"), TileEntitySteelChest.class,
             "mmmm3mmmm", "mGmG0GmGm"),
-    CRYSTAL(108, 12, true, "Crystal Chest", "crystalchest.png", 5, Arrays.asList("blockGlass"),
+    CRYSTAL(108, 12, 5, "Crystal Chest", "crystalchest.png", 5, Arrays.asList("blockGlass"),
             TileEntityCrystalChest.class, "GGGGPGGGG"),
-    OBSIDIAN(108, 12, false, "Obsidian Chest", "obsidianchest.png", 6, Arrays.asList("obsidian"),
+    OBSIDIAN(108, 12, 5, "Obsidian Chest", "obsidianchest.png", 6, Arrays.asList("obsidian"),
             TileEntityObsidianChest.class, "mmmm2mmmm"),
-    DIRTCHEST9000(1, 1, false, "Dirt Chest 9000", "dirtchest.png", 7, Arrays.asList("dirt"), TileEntityDirtChest.class,
+    DIRTCHEST9000(1, 1, -1, "Dirt Chest 9000", "dirtchest.png", 7, Arrays.asList("dirt"), TileEntityDirtChest.class,
             Item.getItemFromBlock(Blocks.dirt), "mmmmCmmmm"),
-    NETHERITE(135, 15, true, "Netherite Chest", "netheritechest.png", 2, Arrays.asList("ingotNetherite"),
+    NETHERITE(135, 15, 6, "Netherite Chest", "netheritechest.png", 2, Arrays.asList("ingotNetherite"),
             TileEntityNetheriteChest.class, "OOOmPmOOO", "OOOO6Ommm"),
-    DARKSTEEL(135, 15, true, "Dark Steel Chest", "darksteelchest.png", 2, Arrays.asList("ingotDarkSteel"),
+    DARKSTEEL(135, 15, 6, "Dark Steel Chest", "darksteelchest.png", 2, Arrays.asList("ingotDarkSteel"),
             TileEntityDarkSteelChest.class, "OOOmPmOOO", "OOOO4Ommm"),
-    SILVER(72, 9, false, "Silver Chest", "silverchest.png", 4, Arrays.asList("ingotSilver"),
+    SILVER(72, 9, 3, "Silver Chest", "silverchest.png", 4, Arrays.asList("ingotSilver"),
             TileEntitySilverChest.class, "mmmm3mmmm", "mGmG0GmGm"),
-    WOOD(0, 0, false, "", "", -1, Arrays.asList("plankWood"), null);
+    WOOD(0, 0, -1, "", "", -1, Arrays.asList("plankWood"), null);
 
     final int size;
     private final int rowLength;
     public final String friendlyName;
-    private final boolean tieredChest;
+    private final Integer tier;
     private final String modelTexture;
     private final int textureRow;
     public final Class<? extends TileEntityIronChest> clazz;
@@ -62,17 +63,17 @@ public enum IronChestType {
     private final ArrayList<String> matList;
     private final Item itemFilter;
 
-    IronChestType(int size, int rowLength, boolean tieredChest, String friendlyName, String modelTexture,
+    IronChestType(int size, int rowLength, int tier, String friendlyName, String modelTexture,
             int textureRow, List<String> mats, Class<? extends TileEntityIronChest> clazz, String... recipes) {
-        this(size, rowLength, tieredChest, friendlyName, modelTexture, textureRow, mats, clazz, (Item) null, recipes);
+        this(size, rowLength, tier, friendlyName, modelTexture, textureRow, mats, clazz, (Item) null, recipes);
     }
 
-    IronChestType(int size, int rowLength, boolean tieredChest, String friendlyName, String modelTexture,
+    IronChestType(int size, int rowLength, int tier, String friendlyName, String modelTexture,
             int textureRow, List<String> mats, Class<? extends TileEntityIronChest> clazz, Item itemFilter,
             String... recipes) {
         this.size = size;
         this.rowLength = rowLength;
-        this.tieredChest = tieredChest;
+        this.tier = tier;
         this.friendlyName = friendlyName;
         this.modelTexture = modelTexture;
         this.textureRow = textureRow;
@@ -106,8 +107,18 @@ public enum IronChestType {
     }
 
     public static void registerBlocksAndRecipes(BlockIronChest blockResult) {
+        int previousTier = -1;
         Object previous = "chestWood";
-        for (IronChestType typ : values()) {
+        IronChestType[] vals = values();
+
+        // Sort by tiers
+        Arrays.sort(vals, new Comparator<IronChestType>() {
+            public int compare(IronChestType a, IronChestType b) {
+                return a.tier.compareTo(b.tier);
+            }
+        });
+
+        for (IronChestType typ : vals) {
             if ((typ == NETHERITE) && IronChest.ENABLE_DARK_STEEL_CHESTS) {
                 continue;
             }
@@ -117,14 +128,14 @@ public enum IronChestType {
             if (typ.isValidForCreativeMode()) {
                 GameRegistry.registerCustomItemStack(typ.friendlyName, chest);
             }
-            if (typ.tieredChest) {
+            if (typ.tier != -1 && typ.tier > previousTier) {
                 previous = chest;
             }
         }
     }
 
     public static void generateRecipesForType(BlockIronChest blockResult, Object previousTier, IronChestType type) {
-        if (IronChest.ENABLE_DARK_STEEL_CHESTS) {
+        if (IronChest.isGTNHLoaded) {
             return;
         }
         for (String recipe : type.recipes) {
