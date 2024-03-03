@@ -134,7 +134,7 @@ public class IronChest {
                 }
             }
             if (ENABLE_DARK_STEEL_CHESTS) {
-                if (mapping.name.equals("IronChest:diamondNetheriteUpgrade")) {
+                if (mapping.name.equals("IronChest:obsidianNetheriteUpgrade")) {
                     if (mapping.type == GameRegistry.Type.BLOCK) {
                         mapping.remap(GameRegistry.findBlock("IronChest", "diamondDarkSteelUpgrade"));
                     } else {

@@ -8,7 +8,6 @@
 package cpw.mods.ironchest;
 
 import static cpw.mods.ironchest.IronChest.ENABLE_STEEL_CHESTS;
-import static cpw.mods.ironchest.IronChestType.NETHERITE;
 import static net.minecraftforge.common.util.ForgeDirection.DOWN;
 import static net.minecraftforge.common.util.ForgeDirection.UP;
 
