@@ -7,7 +7,6 @@
  ******************************************************************************/
 package cpw.mods.ironchest;
 
-import static cpw.mods.ironchest.IronChest.ENABLE_STEEL_CHESTS;
 import static cpw.mods.ironchest.IronChestType.*;
 
 import net.minecraft.init.Blocks;
@@ -83,26 +82,24 @@ public enum ChestChangerType {
         for (ChestChangerType type : values()) {
             switch (type) {
                 case STEELGOLD, COPPERSTEEL -> {
-                    if (ENABLE_STEEL_CHESTS) {
+                    if (IronChestType.STEEL.isEnabled()) {
                         type.buildItem(cfg);
                     }
                 }
                 case SILVERGOLD, COPPERSILVER -> {
-                    if (ENABLE_STEEL_CHESTS) {
-                        continue;
+                    if (IronChestType.SILVER.isEnabled()) {
+                        type.buildItem(cfg);
                     }
-                    type.buildItem(cfg);
                 }
                 case DIAMONDDARKSTEEL -> {
-                    if (IronChest.ENABLE_DARK_STEEL_CHESTS) {
+                    if (IronChestType.DARKSTEEL.isEnabled()) {
                         type.buildItem(cfg);
                     }
                 }
                 case OBSIDIANNETHERITE -> {
-                    if (IronChest.ENABLE_DARK_STEEL_CHESTS) {
-                        continue;
+                    if (IronChestType.NETHERITE.isEnabled()) {
+                        type.buildItem(cfg);
                     }
-                    type.buildItem(cfg);
                 }
                 default -> type.buildItem(cfg);
             }

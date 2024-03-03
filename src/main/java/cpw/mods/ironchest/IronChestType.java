@@ -115,11 +115,11 @@ public enum IronChestType {
         if (this == STEEL) {
             return IronChest.ENABLE_STEEL_CHESTS;
         } else if (this == SILVER) {
-            return !IronChest.ENABLE_STEEL_CHESTS;
+            return IronChest.ENABLE_SILVER_CHESTS;
         } else if (this == DARKSTEEL) {
             return IronChest.ENABLE_DARK_STEEL_CHESTS;
         } else if (this == NETHERITE) {
-            return !IronChest.ENABLE_DARK_STEEL_CHESTS;
+            return IronChest.ENABLE_NETHERITE_CHESTS;
         }
         return true;
     }
