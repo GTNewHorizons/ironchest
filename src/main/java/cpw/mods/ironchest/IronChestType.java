@@ -124,7 +124,7 @@ public enum IronChestType {
     }
 
     public static void generateRecipesForType(BlockIronChest blockResult, Object previousTier, IronChestType type) {
-        if (IronChest.ENABLE_DARK_STEEL_CHESTS) {
+        if (IronChest.isGTNHLoaded) {
             return;
         }
         for (String recipe : type.recipes) {
