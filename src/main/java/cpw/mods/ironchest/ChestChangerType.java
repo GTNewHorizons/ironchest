@@ -94,12 +94,12 @@ public enum ChestChangerType {
                     type.buildItem(cfg);
                 }
                 case DIAMONDDARKSTEEL -> {
-                    if (IronChest.isGTNHLoaded) {
+                    if (IronChest.ENABLE_DARK_STEEL_CHESTS) {
                         type.buildItem(cfg);
                     }
                 }
                 case OBSIDIANNETHERITE -> {
-                    if (IronChest.isGTNHLoaded) {
+                    if (IronChest.ENABLE_DARK_STEEL_CHESTS) {
                         continue;
                     }
                     type.buildItem(cfg);
