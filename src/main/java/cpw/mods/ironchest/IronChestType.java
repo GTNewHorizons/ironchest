@@ -37,7 +37,7 @@ public enum IronChestType {
             TileEntityCopperChest.class, "mmmmCmmmm"),
     STEEL(72, 9, false, "Steel Chest", "silverchest.png", 4, Arrays.asList("ingotSteel"), TileEntitySteelChest.class,
             "mmmm3mmmm", "mGmG0GmGm"),
-    CRYSTAL(108, 12, true, "Crystal Chest", "crystalchest.png", 5, Arrays.asList("blockGlass"),
+    CRYSTAL(108, 12, false, "Crystal Chest", "crystalchest.png", 5, Arrays.asList("blockGlass"),
             TileEntityCrystalChest.class, "GGGGPGGGG"),
     OBSIDIAN(108, 12, false, "Obsidian Chest", "obsidianchest.png", 6, Arrays.asList("obsidian"),
             TileEntityObsidianChest.class, "mmmm2mmmm"),
