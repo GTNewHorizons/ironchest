@@ -56,10 +56,20 @@ public class IronChest {
             cfg.load();
             CACHE_RENDER = cfg.get(Configuration.CATEGORY_GENERAL, "cacheRenderingInformation", true).getBoolean(true);
             OCELOTS_SITONCHESTS = cfg.get(Configuration.CATEGORY_GENERAL, "ocelotsSitOnChests", true).getBoolean(true);
-            TRANSPARENT_RENDER_INSIDE = cfg.get(Configuration.CATEGORY_GENERAL, "transparentRenderInside", true).getBoolean(true);
-            TRANSPARENT_RENDER_DISTANCE = cfg.get(Configuration.CATEGORY_GENERAL, "transparentRenderDistance", 128D).getDouble(128D);
-            ENABLE_STEEL_CHESTS = cfg.get(Configuration.CATEGORY_GENERAL, "enableSteelChests", true, "Enables the steel chest instead of the silver chest.").getBoolean(true);
-            ENABLE_DARK_STEEL_CHESTS = cfg.get(Configuration.CATEGORY_GENERAL, "enableDarkSteelChests", isGTNHLoaded, "Enables the dark steel chest instead the netherit chest.").getBoolean(isGTNHLoaded);
+            TRANSPARENT_RENDER_INSIDE = cfg.get(Configuration.CATEGORY_GENERAL, "transparentRenderInside", true)
+                    .getBoolean(true);
+            TRANSPARENT_RENDER_DISTANCE = cfg.get(Configuration.CATEGORY_GENERAL, "transparentRenderDistance", 128D)
+                    .getDouble(128D);
+            ENABLE_STEEL_CHESTS = cfg.get(
+                    Configuration.CATEGORY_GENERAL,
+                    "enableSteelChests",
+                    true,
+                    "Enables the steel chest instead of the silver chest.").getBoolean(true);
+            ENABLE_DARK_STEEL_CHESTS = cfg.get(
+                    Configuration.CATEGORY_GENERAL,
+                    "enableDarkSteelChests",
+                    isGTNHLoaded,
+                    "Enables the dark steel chest instead the netherit chest.").getBoolean(isGTNHLoaded);
             ChestChangerType.buildItems(cfg);
         } catch (Exception e) {
             FMLLog.log(Level.ERROR, e, "IronChest has a problem loading its configuration");
@@ -141,8 +151,7 @@ public class IronChest {
                         mapping.remap(GameRegistry.findItem("IronChest", "diamondDarkSteelUpgrade"));
                     }
                 }
-            }
-            else {
+            } else {
                 if (mapping.name.equals("IronChest:diamondDarkSteelUpgrade")) {
                     if (mapping.type == GameRegistry.Type.BLOCK) {
                         mapping.remap(GameRegistry.findBlock("IronChest", "obsidianNetheriteUpgrade"));
