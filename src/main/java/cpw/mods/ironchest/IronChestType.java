@@ -99,6 +99,19 @@ public enum IronChestType {
         return textureRow;
     }
 
+    public boolean isEnabled() {
+        if (this == STEEL) {
+            return IronChest.ENABLE_STEEL_CHESTS;
+        } else if (this == SILVER) {
+            return !IronChest.ENABLE_STEEL_CHESTS;
+        } else if (this == DARKSTEEL) {
+            return IronChest.ENABLE_DARK_STEEL_CHESTS;
+        } else if (this == NETHERITE) {
+            return !IronChest.ENABLE_DARK_STEEL_CHESTS;
+        }
+        return true;
+    }
+
     public static TileEntityIronChest makeEntity(int metadata) {
         // Compatibility
         int chesttype = validateMeta(metadata);
@@ -145,21 +158,19 @@ public enum IronChestType {
         IronChestType[] vals = getAllSortedByTier();
 
         for (IronChestType typ : vals) {
-            if ((typ == NETHERITE) && IronChest.ENABLE_DARK_STEEL_CHESTS) {
-                continue;
-            }
-            ItemStack chest = new ItemStack(blockResult, 1, typ.ordinal());
-            registerChest(typ, chest);
-            if (typ.isValidForCreativeMode()) {
-                GameRegistry.registerCustomItemStack(typ.friendlyName, chest);
+            if (typ.isEnabled()) {
+                ItemStack chest = new ItemStack(blockResult, 1, typ.ordinal());
+                registerChest(typ, chest);
+                if (typ.isValidForCreativeMode()) {
+                    GameRegistry.registerCustomItemStack(typ.friendlyName, chest);
+                }
             }
         }
 
         for (IronChestType typ : vals) {
-            if ((typ == NETHERITE) && IronChest.ENABLE_DARK_STEEL_CHESTS) {
-                continue;
+            if (typ.isEnabled()) {
+                generateRecipesForType(typ);
             }
-            generateRecipesForType(typ);
         }
     }
 
