@@ -108,7 +108,7 @@ public enum IronChestType {
     public static void registerBlocksAndRecipes(BlockIronChest blockResult) {
         Object previous = "chestWood";
         for (IronChestType typ : values()) {
-            if ((typ == NETHERITE) && IronChest.isGTNHLoaded) {
+            if ((typ == NETHERITE) && IronChest.ENABLE_DARK_STEEL_CHESTS) {
                 continue;
             }
 
@@ -124,7 +124,7 @@ public enum IronChestType {
     }
 
     public static void generateRecipesForType(BlockIronChest blockResult, Object previousTier, IronChestType type) {
-        if (IronChest.isGTNHLoaded) {
+        if (IronChest.ENABLE_DARK_STEEL_CHESTS) {
             return;
         }
         for (String recipe : type.recipes) {

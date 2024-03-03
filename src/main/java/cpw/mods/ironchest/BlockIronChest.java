@@ -232,12 +232,12 @@ public class BlockIronChest extends BlockContainer {
                     par3List.add(new ItemStack(this, 1, type.ordinal()));
                 }
                 case DARKSTEEL -> {
-                    if (IronChest.isGTNHLoaded) {
+                    if (IronChest.ENABLE_DARK_STEEL_CHESTS) {
                         par3List.add(new ItemStack(this, 1, type.ordinal()));
                     }
                 }
                 case NETHERITE -> {
-                    if (IronChest.isGTNHLoaded) {
+                    if (IronChest.ENABLE_DARK_STEEL_CHESTS) {
                         continue;
                     }
                     par3List.add(new ItemStack(this, 1, type.ordinal()));
