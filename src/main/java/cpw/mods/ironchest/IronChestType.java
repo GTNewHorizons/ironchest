@@ -45,7 +45,7 @@ public enum IronChestType {
             Item.getItemFromBlock(Blocks.dirt), "mmmmCmmmm"),
     NETHERITE(135, 15, true, "Netherite Chest", "netheritechest.png", 2, Arrays.asList("ingotNetherite"),
             TileEntityNetheriteChest.class, "OOOmPmOOO", "OOOO6Ommm"),
-    DARKSTEEL(135, 15, true, "Dark Steel Chest", "darksteelchest.png", 2, Arrays.asList("ingotNetherite"),
+    DARKSTEEL(135, 15, true, "Dark Steel Chest", "darksteelchest.png", 2, Arrays.asList("ingotDarkSteel"),
             TileEntityDarkSteelChest.class, "OOOmPmOOO", "OOOO4Ommm"),
     SILVER(72, 9, false, "Silver Chest", "silverchest.png", 4, Arrays.asList("ingotSilver"),
             TileEntitySilverChest.class, "mmmm3mmmm", "mGmG0GmGm"),
