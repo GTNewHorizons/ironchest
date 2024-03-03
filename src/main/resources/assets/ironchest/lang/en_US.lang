@@ -21,7 +21,7 @@ item.ironchest:DIAMONDCRYSTAL.name=Diamond to Crystal Chest Upgrade
 item.ironchest:WOODIRON.name=Wood to Iron Chest Upgrade
 item.ironchest:WOODCOPPER.name=Wood to Copper Chest Upgrade
 item.ironchest:DIAMONDOBSIDIAN.name=Diamond to Obsidian Chest Upgrade
-item.ironchest:DIAMONDNETHERITE.name=Diamond to Netherite Chest Upgrade
+item.ironchest:OBSIDIANNETHERITE.name=Obsidian to Netherite Chest Upgrade
 item.ironchest:DIAMONDDARKSTEEL.name=Diamond to Dark Steel Chest Upgrade
 
 book.ironchest:dirtchest9000.title=How to use your DirtChest 9000!
