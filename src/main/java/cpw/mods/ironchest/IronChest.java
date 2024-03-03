@@ -15,6 +15,7 @@ import net.minecraftforge.oredict.OreDictionary;
 import org.apache.logging.log4j.Level;
 
 import cpw.mods.fml.common.FMLLog;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -44,9 +45,11 @@ public class IronChest {
     public static boolean TRANSPARENT_RENDER_INSIDE = true;
     public static double TRANSPARENT_RENDER_DISTANCE = 128D;
     public static boolean ENABLE_STEEL_CHESTS = true;
+    public static boolean isGTNHLoaded;
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+        isGTNHLoaded = Loader.isModLoaded("dreamcraft");
         Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());
         try {
             cfg.load();

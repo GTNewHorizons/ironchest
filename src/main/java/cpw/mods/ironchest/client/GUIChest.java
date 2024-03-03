@@ -44,13 +44,13 @@ public class GUIChest extends GuiContainer {
         IRON(184, 202, ResourceList.IRON, IronChestType.IRON),
         GOLD(184, 256, ResourceList.GOLD, IronChestType.GOLD),
         DIAMOND(238, 256, ResourceList.DIAMOND, IronChestType.DIAMOND),
-        NETHERITE(292, 256, ResourceList.NETHERITE, IronChestType.NETHERITE),
-        DARKSTEEL(292, 256, ResourceList.DARKSTEEL, IronChestType.DARKSTEEL),
         COPPER(184, 184, ResourceList.COPPER, IronChestType.COPPER),
         STEEL(184, 238, ResourceList.STEEL, IronChestType.STEEL),
         CRYSTAL(238, 256, ResourceList.DIAMOND, IronChestType.CRYSTAL),
         OBSIDIAN(238, 256, ResourceList.DIAMOND, IronChestType.OBSIDIAN),
-        DIRTCHEST9000(184, 184, ResourceList.DIRT, IronChestType.DIRTCHEST9000);
+        DIRTCHEST9000(184, 184, ResourceList.DIRT, IronChestType.DIRTCHEST9000),
+        NETHERITE(292, 256, ResourceList.NETHERITE, IronChestType.NETHERITE),
+        DARKSTEEL(292, 256, ResourceList.DARKSTEEL, IronChestType.DARKSTEEL);
 
         private final int xSize;
         private final int ySize;
@@ -69,9 +69,14 @@ public class GUIChest extends GuiContainer {
             return new ContainerIronChest(player, chest, mainType, xSize, ySize);
         }
 
-        public static GUIChest buildGUI(IronChestType type, IInventory playerInventory,
+        public static GUIChest buildGUI(int chestTypeIndex, IInventory playerInventory,
                 TileEntityIronChest chestInventory) {
-            return new GUIChest(values()[chestInventory.getType().ordinal()], playerInventory, chestInventory);
+            for (GUI gui : values()) {
+                if (gui.mainType.ordinal() == chestTypeIndex) {
+                    return new GUIChest(gui, playerInventory, chestInventory);
+                }
+            }
+            return null;
         }
     }
 

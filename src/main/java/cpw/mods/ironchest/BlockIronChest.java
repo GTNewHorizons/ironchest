@@ -38,7 +38,6 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 import com.google.common.collect.Lists;
 
-import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -221,31 +220,29 @@ public class BlockIronChest extends BlockContainer {
                 continue;
             }
             switch (type) {
-                case STEEL:
+                case STEEL -> {
                     if (ENABLE_STEEL_CHESTS) {
                         par3List.add(new ItemStack(this, 1, type.ordinal()));
                     }
-                    break;
-                case SILVER:
+                }
+                case SILVER -> {
                     if (ENABLE_STEEL_CHESTS) {
                         continue;
                     }
                     par3List.add(new ItemStack(this, 1, type.ordinal()));
-                    break;
-                case DARKSTEEL:
-                    if (Loader.isModLoaded("dreamcraft")) {
+                }
+                case DARKSTEEL -> {
+                    if (IronChest.isGTNHLoaded) {
                         par3List.add(new ItemStack(this, 1, type.ordinal()));
                     }
-                    break;
-                case NETHERITE:
-                    if (Loader.isModLoaded("dreamcraft")) {
+                }
+                case NETHERITE -> {
+                    if (IronChest.isGTNHLoaded) {
                         continue;
                     }
                     par3List.add(new ItemStack(this, 1, type.ordinal()));
-                    break;
-                default:
-                    par3List.add(new ItemStack(this, 1, type.ordinal()));
-                    break;
+                }
+                default -> par3List.add(new ItemStack(this, 1, type.ordinal()));
             }
 
         }

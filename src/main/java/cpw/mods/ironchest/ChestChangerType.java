@@ -14,7 +14,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.config.Configuration;
 
-import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public enum ChestChangerType {
@@ -82,42 +81,37 @@ public enum ChestChangerType {
 
     public static void buildItems(Configuration cfg) {
         for (ChestChangerType type : values()) {
-
             switch (type) {
-                case STEELGOLD:
-                case COPPERSTEEL:
+                case STEELGOLD, COPPERSTEEL -> {
                     if (ENABLE_STEEL_CHESTS) {
                         type.buildItem(cfg);
                     }
-                    break;
-                case SILVERGOLD:
-                case COPPERSILVER:
+                }
+                case SILVERGOLD, COPPERSILVER -> {
                     if (ENABLE_STEEL_CHESTS) {
                         continue;
                     }
                     type.buildItem(cfg);
-                    break;
-                case DIAMONDDARKSTEEL:
-                    if (Loader.isModLoaded("dreamcraft")) {
+                }
+                case DIAMONDDARKSTEEL -> {
+                    if (IronChest.isGTNHLoaded) {
                         type.buildItem(cfg);
                     }
-                    break;
-                case DIAMONDNETHERITE:
-                    if (Loader.isModLoaded("dreamcraft")) {
+                }
+                case DIAMONDNETHERITE -> {
+                    if (IronChest.isGTNHLoaded) {
                         continue;
                     }
                     type.buildItem(cfg);
-                    break;
-                default:
-                    type.buildItem(cfg);
-                    break;
+                }
+                default -> type.buildItem(cfg);
             }
 
         }
     }
 
     public static void generateRecipes() {
-        if (Loader.isModLoaded("dreamcraft")) {
+        if (IronChest.isGTNHLoaded) {
             return;
         }
         for (ChestChangerType item : values()) {

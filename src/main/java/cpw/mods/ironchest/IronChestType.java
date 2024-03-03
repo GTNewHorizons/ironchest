@@ -21,7 +21,6 @@ import net.minecraft.nbt.NBTTagByte;
 import net.minecraft.util.IIcon;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
-import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -44,12 +43,12 @@ public enum IronChestType {
             TileEntityObsidianChest.class, "mmmm2mmmm"),
     DIRTCHEST9000(1, 1, false, "Dirt Chest 9000", "dirtchest.png", 7, Arrays.asList("dirt"), TileEntityDirtChest.class,
             Item.getItemFromBlock(Blocks.dirt), "mmmmCmmmm"),
-    SILVER(72, 9, false, "Silver Chest", "silverchest.png", 4, Arrays.asList("ingotSilver"),
-            TileEntitySilverChest.class, "mmmm3mmmm", "mGmG0GmGm"),
     NETHERITE(135, 15, true, "Netherite Chest", "netheritechest.png", 2, Arrays.asList("ingotNetherite"),
             TileEntityNetheriteChest.class, "OOOmPmOOO", "OOOO6Ommm"),
     DARKSTEEL(135, 15, true, "Dark Steel Chest", "darksteelchest.png", 2, Arrays.asList("ingotNetherite"),
             TileEntityDarkSteelChest.class, "OOOmPmOOO", "OOOO4Ommm"),
+    SILVER(72, 9, false, "Silver Chest", "silverchest.png", 4, Arrays.asList("ingotSilver"),
+            TileEntitySilverChest.class, "mmmm3mmmm", "mGmG0GmGm"),
     WOOD(0, 0, false, "", "", -1, Arrays.asList("plankWood"), null);
 
     final int size;
@@ -121,7 +120,7 @@ public enum IronChestType {
     }
 
     public static void generateRecipesForType(BlockIronChest blockResult, Object previousTier, IronChestType type) {
-        if (Loader.isModLoaded("dreamcraft")) {
+        if (IronChest.isGTNHLoaded) {
             return;
         }
         for (String recipe : type.recipes) {
