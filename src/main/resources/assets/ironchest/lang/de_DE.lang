@@ -21,10 +21,14 @@ item.ironchest:DIAMONDCRYSTAL.name=Diamant-zu-Kristalltruhen-Upgrade
 item.ironchest:WOODIRON.name=Holz-zu-Eisentruhen-Upgrade
 item.ironchest:WOODCOPPER.name=Holz-zu-Kupfertruhen-Upgrade
 item.ironchest:DIAMONDOBSIDIAN.name=Diamant-zu-Obsidiantruhen-Upgrade
+item.ironchest:OBSIDIANNETHERITE.name=Obsidian-zu-Netherittruhen-Upgrade
+item.ironchest:DIAMONDDARKSTEEL.name=Diamant-zu-Dunkelstahltruhen-Upgrade
 item.ironchest:DIAMONDNETHERITE.name=Diamant-zu-Netherittruhen-Upgrade
 item.ironchest:CRYSTALNETHERITE.name=Kristall-zu-Netherittruhen-Upgrade
 item.ironchest:CRYSTALDARKSTEEL.name=Kristall-zu-Dunkelstahltruhen-Upgrade
 item.ironchest:OBSIDIANDARKSTEEL.name=Obsidian-zu-Dunkelstahltruhen-Upgrade
+item.ironchest:IRONSTEEL.name=Eisen-zu-Stahltruhen-Upgrade
+item.ironchest:IRONSILVER.name=Eisen-zu-Silbertruhen-Upgrade
 
 book.ironchest:dirtchest9000.title=Wie du deine neue DirtChest 9000 nutzt!
 book.ironchest:dirtchest9000.page1=Willkommen zu Ihrer neuen DirtChest 9000! Wir hoffen, dass Sie viele freudige Jahre genießen werden, wenn Sie Ihre Erd-Stacks in unserem nützlichen Speichergerät lagern.
