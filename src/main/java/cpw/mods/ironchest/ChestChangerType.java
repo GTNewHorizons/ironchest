@@ -32,7 +32,15 @@ public enum ChestChangerType {
     OBSIDIANNETHERITE(OBSIDIAN, NETHERITE, "obsidianNetheriteUpgrade", "Obsidian to Netherite Chest Upgrade", "OOO",
             "msm", "OOO"),
     DIAMONDDARKSTEEL(DIAMOND, DARKSTEEL, "diamondDarkSteelUpgrade", "Diamond to Dark Steel Chest Upgrade", "OOO", "msm",
-            "OOO");
+            "OOO"),
+    DIAMONDNETHERITE(DIAMOND, NETHERITE, "diamondNetheriteUpgrade", "Diamond to Netherite Chest Upgrade", "OOO", "msm",
+            "OOO"),
+    CRYSTALNETHERITE(CRYSTAL, NETHERITE, "crystalNetheriteUpgrade", "Crystal to Netherite Chest Upgrade", "OOO", "msm",
+            "OOO"),
+    CRYSTALDARKSTEEL(CRYSTAL, DARKSTEEL, "crystalDarkSteelUpgrade", "Crystal to Dark Steel Chest Upgrade", "OOO", "msm",
+            "OOO"),
+    OBSIDIANDARKSTEEL(OBSIDIAN, DARKSTEEL, "obsidianDarkSteelUpgrade", "Obsidian to Dark Steel Chest Upgrade", "OOO",
+            "msm", "OOO");
 
     private final IronChestType source;
     private final IronChestType target;
