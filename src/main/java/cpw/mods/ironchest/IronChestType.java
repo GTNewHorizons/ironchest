@@ -31,28 +31,28 @@ import cpw.mods.fml.relauncher.SideOnly;
 public enum IronChestType {
 
     IRON(54, 9, 2, "Iron Chest", "ironchest.png", 0, Arrays.asList("ingotIron", "ingotRefinedIron"),
-            TileEntityIronChest.class, null, "mGmGPGmGm", "mmmmPmmmm", false),
+            TileEntityIronChest.class, null, "mGmGPGmGm", "mmmmPmmmm", 0),
     GOLD(81, 9, 4, "Gold Chest", "goldchest.png", 1, Arrays.asList("ingotGold"), TileEntityGoldChest.class, null,
-            "mGmGPGmGm", "mmmmPmmmm", false),
+            "mGmGPGmGm", "mmmmPmmmm", 0),
     DIAMOND(108, 12, 5, "Diamond Chest", "diamondchest.png", 2, Arrays.asList("gemDiamond"),
-            TileEntityDiamondChest.class, null, "GGGmPmGGG", "GGGGPGmmm", false),
+            TileEntityDiamondChest.class, null, "GGGmPmGGG", "GGGGPGmmm", 0),
     COPPER(45, 9, 1, "Copper Chest", "copperchest.png", 3, Arrays.asList("ingotCopper"), TileEntityCopperChest.class,
-            null, "mmmmPmmmm", "mGmGPGmGm", false),
+            null, "mmmmPmmmm", "mGmGPGmGm", 0),
     STEEL(72, 9, 3, "Steel Chest", "silverchest.png", 4, Arrays.asList("ingotSteel"), TileEntitySteelChest.class, null,
-            "mGmGPGmGm", "mmmmPmmmm", false),
+            "mGmGPGmGm", "mmmmPmmmm", 0),
     CRYSTAL(108, 12, 5, "Crystal Chest", "crystalchest.png", 5, Arrays.asList("blockGlass"),
-            TileEntityCrystalChest.class, "mmmmPmmmm", null, null, false),
+            TileEntityCrystalChest.class, "mmmmPmmmm", null, null, 0),
     OBSIDIAN(108, 12, 5, "Obsidian Chest", "obsidianchest.png", 6, Arrays.asList("obsidian"),
-            TileEntityObsidianChest.class, "mmmmPmmmm", null, null, true),
+            TileEntityObsidianChest.class, "mmmmPmmmm", null, null, 1),
     DIRTCHEST9000(1, 1, -1, "Dirt Chest 9000", "dirtchest.png", 7, Arrays.asList("dirt"), TileEntityDirtChest.class,
-            Item.getItemFromBlock(Blocks.dirt), "mmmmCmmmm", null, null, false),
+            Item.getItemFromBlock(Blocks.dirt), "mmmmCmmmm", null, null, 0),
     NETHERITE(135, 15, 6, "Netherite Chest", "netheritechest.png", 2, Arrays.asList("ingotNetherite"),
-            TileEntityNetheriteChest.class, null, "OOOmPmOOO", "OOOOPOmmm", true),
+            TileEntityNetheriteChest.class, null, "OOOmPmOOO", "OOOOPOmmm", 1),
     DARKSTEEL(135, 15, 6, "Dark Steel Chest", "darksteelchest.png", 2, Arrays.asList("ingotDarkSteel"),
-            TileEntityDarkSteelChest.class, null, "OOOmPmOOO", "OOOOPOmmm", false),
+            TileEntityDarkSteelChest.class, null, "OOOmPmOOO", "OOOOPOmmm", 0),
     SILVER(72, 9, 3, "Silver Chest", "silverchest.png", 4, Arrays.asList("ingotSilver"), TileEntitySilverChest.class,
-            null, "mGmGPGmGm", "mmmmPmmmm", false),
-    WOOD(0, 0, -1, "", "", -1, Arrays.asList("plankWood"), null, null, null, null, false);
+            null, "mGmGPGmGm", "mmmmPmmmm", 0),
+    WOOD(0, 0, -1, "", "", -1, Arrays.asList("plankWood"), null, null, null, null, 0);
 
     final int size;
     private final int rowLength;
@@ -66,11 +66,11 @@ public enum IronChestType {
     private final String recipeUpgradeTwoTiers;
     private final ArrayList<String> matList;
     private final Item itemFilter;
-    private final boolean isExplosionSafe;
+    private final int resistance;
 
     IronChestType(int size, int rowLength, int tier, String friendlyName, String modelTexture, int textureRow,
             List<String> mats, Class<? extends TileEntityIronChest> clazz, String recipeDirect,
-            String recipeUpgradeOneTier, String recipeUpgradeTwoTiers, boolean isExplosionSafe) {
+            String recipeUpgradeOneTier, String recipeUpgradeTwoTiers, int resistance) {
         this(
                 size,
                 rowLength,
@@ -84,12 +84,12 @@ public enum IronChestType {
                 recipeDirect,
                 recipeUpgradeOneTier,
                 recipeUpgradeTwoTiers,
-                isExplosionSafe);
+                resistance);
     }
 
     IronChestType(int size, int rowLength, int tier, String friendlyName, String modelTexture, int textureRow,
             List<String> mats, Class<? extends TileEntityIronChest> clazz, Item itemFilter, String recipeDirect,
-            String recipeUpgradeOneTier, String recipeUpgradeTwoTiers, boolean isExplosionSafe) {
+            String recipeUpgradeOneTier, String recipeUpgradeTwoTiers, int resistance) {
         this.size = size;
         this.rowLength = rowLength;
         this.tier = tier;
@@ -102,7 +102,7 @@ public enum IronChestType {
         this.recipeUpgradeOneTier = recipeUpgradeOneTier;
         this.recipeUpgradeTwoTiers = recipeUpgradeTwoTiers;
         this.matList = new ArrayList<String>();
-        this.isExplosionSafe = isExplosionSafe;
+        this.resistance = resistance;
         matList.addAll(mats);
     }
 
@@ -200,7 +200,7 @@ public enum IronChestType {
 
             // spotless:off
             if (typ.recipeDirect != null) {
-                Object[] curTiers = getRegistredChestsByTier(typ.tier, false);
+                Object[] curTiers = getRegistredChestsByTier(typ.tier, typ.resistance - 1);
                 if (curTiers.length > 1) {
                     for (Object curTier : curTiers) { /* mainly meant for crystal and obsidian chests */
                         if (curTier != chest) {
@@ -219,7 +219,7 @@ public enum IronChestType {
                 }
             }
             if (typ.recipeUpgradeOneTier != null) {
-                Object[] prevTiers = getRegistredChestsByTier(typ.tier - 1, typ.isExplosionSafe);
+                Object[] prevTiers = getRegistredChestsByTier(typ.tier - 1, typ.resistance);
                 for (Object prevTier : prevTiers) {
                     addRecipe(chest, getRecipeSplitted(typ.recipeUpgradeOneTier),
                         'm', mainMaterial, 'P', prevTier, /* previous tier of chest */
@@ -228,7 +228,7 @@ public enum IronChestType {
                 }
             }
             if (typ.recipeUpgradeTwoTiers != null) {
-                Object[] prevPrevTiers = getRegistredChestsByTier(typ.tier - 2, typ.isExplosionSafe);
+                Object[] prevPrevTiers = getRegistredChestsByTier(typ.tier - 2, typ.resistance);
                 for (Object prevTier : prevPrevTiers) {
                     addRecipe(chest, getRecipeSplitted(typ.recipeUpgradeTwoTiers),
                         'm', mainMaterial, 'P', prevTier, /* previous tier of chest */
@@ -287,7 +287,7 @@ public enum IronChestType {
     }
 
     public boolean isExplosionResistant() {
-        return this.isExplosionSafe;
+        return this.resistance >= 1;
     }
 
     @SideOnly(Side.CLIENT)
@@ -341,12 +341,12 @@ public enum IronChestType {
         return registredChests.getOrDefault(typ, null);
     }
 
-    public static Object[] getRegistredChestsByTier(int tier, boolean onlyExplosionSafe) {
+    public static Object[] getRegistredChestsByTier(int tier, int resistance) {
         if (tier < 0) {
             return new Object[0];
         }
 
-        if (tier == 0 && !onlyExplosionSafe) {
+        if (tier == 0) {
             return new Object[] { "chestWood" };
         }
 
@@ -354,7 +354,7 @@ public enum IronChestType {
         HashSet<Object> result = new HashSet<Object>();
 
         for (IronChestType typ : allTyps) {
-            if (typ.tier == tier && (!onlyExplosionSafe || typ.isExplosionSafe)) {
+            if (typ.tier == tier && typ.resistance >= resistance) {
                 ItemStack itemStack = getRegistredChest(typ);
                 if (itemStack != null) {
                     result.add(itemStack);
