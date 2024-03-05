@@ -127,6 +127,18 @@ public enum IronChestType {
         return true;
     }
 
+    public boolean allowUpgradeFrom(IronChestType typ) {
+        var name = typ.name() + ":" + this.name();
+
+        for (String blocked : IronChest.blocklistUpgrades) {
+            if (blocked.equals(name)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     public static TileEntityIronChest makeEntity(int metadata) {
         // Compatibility
         int chesttype = validateMeta(metadata);
@@ -200,7 +212,7 @@ public enum IronChestType {
 
             // spotless:off
             if (typ.recipeDirect != null) {
-                Object[] curTiers = getRegistredChestsByTier(typ.tier, typ.resistance - 1);
+                Object[] curTiers = getRegistredChestsByTier(typ, typ.tier, typ.resistance - 1);
                 if (curTiers.length > 1) {
                     for (Object curTier : curTiers) { /* mainly meant for crystal and obsidian chests */
                         if (curTier != chest) {
@@ -219,7 +231,7 @@ public enum IronChestType {
                 }
             }
             if (typ.recipeUpgradeOneTier != null) {
-                Object[] prevTiers = getRegistredChestsByTier(typ.tier - 1, typ.resistance);
+                Object[] prevTiers = getRegistredChestsByTier(typ, typ.tier - 1, typ.resistance);
                 for (Object prevTier : prevTiers) {
                     addRecipe(chest, getRecipeSplitted(typ.recipeUpgradeOneTier),
                         'm', mainMaterial, 'P', prevTier, /* previous tier of chest */
@@ -228,7 +240,7 @@ public enum IronChestType {
                 }
             }
             if (typ.recipeUpgradeTwoTiers != null) {
-                Object[] prevPrevTiers = getRegistredChestsByTier(typ.tier - 2, typ.resistance);
+                Object[] prevPrevTiers = getRegistredChestsByTier(typ, typ.tier - 2, typ.resistance);
                 for (Object prevTier : prevPrevTiers) {
                     addRecipe(chest, getRecipeSplitted(typ.recipeUpgradeTwoTiers),
                         'm', mainMaterial, 'P', prevTier, /* previous tier of chest */
@@ -341,7 +353,7 @@ public enum IronChestType {
         return registredChests.getOrDefault(typ, null);
     }
 
-    public static Object[] getRegistredChestsByTier(int tier, int resistance) {
+    public static Object[] getRegistredChestsByTier(IronChestType parentMaterial, int tier, int resistance) {
         if (tier < 0) {
             return new Object[0];
         }
@@ -354,7 +366,7 @@ public enum IronChestType {
         HashSet<Object> result = new HashSet<Object>();
 
         for (IronChestType typ : allTyps) {
-            if (typ.tier == tier && typ.resistance >= resistance) {
+            if (typ.tier == tier && typ.resistance >= resistance && parentMaterial.allowUpgradeFrom(typ)) {
                 ItemStack itemStack = getRegistredChest(typ);
                 if (itemStack != null) {
                     result.add(itemStack);

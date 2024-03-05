@@ -48,6 +48,7 @@ public class IronChest {
     public static boolean ENABLE_SILVER_CHESTS = false;
     public static boolean ENABLE_DARK_STEEL_CHESTS = false;
     public static boolean ENABLE_NETHERITE_CHESTS = true;
+    public static String[] blocklistUpgrades = new String[] {};
     public static boolean isGTNHLoaded;
 
     @EventHandler
@@ -78,6 +79,12 @@ public class IronChest {
                     "enableNetheriteChests",
                     !isGTNHLoaded,
                     "Enables the netherite chest.").getBoolean(!isGTNHLoaded);
+            blocklistUpgrades = cfg.getStringList(
+                    "blocklistUpgrades",
+                    Configuration.CATEGORY_GENERAL,
+                    new String[] {},
+                    "Disallowed upgrades. All upgrades listed here will not be registred and no recipes will be generated for it."
+                            + "\nExample: IRON:GOLD");
             ChestChangerType.buildItems(cfg);
         } catch (Exception e) {
             FMLLog.log(Level.ERROR, e, "IronChest has a problem loading its configuration");

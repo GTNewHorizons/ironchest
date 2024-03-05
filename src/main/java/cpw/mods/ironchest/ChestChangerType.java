@@ -64,6 +64,10 @@ public enum ChestChangerType {
         return this.target.ordinal();
     }
 
+    public boolean isAllowed() {
+        return target.allowUpgradeFrom(source);
+    }
+
     public ItemChestChanger buildItem(Configuration cfg) {
         item = new ItemChestChanger(this);
         GameRegistry.registerItem(item, itemName);
@@ -86,30 +90,31 @@ public enum ChestChangerType {
 
     public static void buildItems(Configuration cfg) {
         for (ChestChangerType type : values()) {
-            switch (type) {
-                case STEELGOLD, COPPERSTEEL -> {
-                    if (IronChestType.STEEL.isEnabled()) {
-                        type.buildItem(cfg);
+            if (type.isAllowed()) {
+                switch (type) {
+                    case STEELGOLD, COPPERSTEEL -> {
+                        if (IronChestType.STEEL.isEnabled()) {
+                            type.buildItem(cfg);
+                        }
                     }
-                }
-                case SILVERGOLD, COPPERSILVER -> {
-                    if (IronChestType.SILVER.isEnabled()) {
-                        type.buildItem(cfg);
+                    case SILVERGOLD, COPPERSILVER -> {
+                        if (IronChestType.SILVER.isEnabled()) {
+                            type.buildItem(cfg);
+                        }
                     }
-                }
-                case DIAMONDDARKSTEEL -> {
-                    if (IronChestType.DARKSTEEL.isEnabled()) {
-                        type.buildItem(cfg);
+                    case DIAMONDDARKSTEEL -> {
+                        if (IronChestType.DARKSTEEL.isEnabled()) {
+                            type.buildItem(cfg);
+                        }
                     }
-                }
-                case OBSIDIANNETHERITE -> {
-                    if (IronChestType.NETHERITE.isEnabled()) {
-                        type.buildItem(cfg);
+                    case OBSIDIANNETHERITE -> {
+                        if (IronChestType.NETHERITE.isEnabled()) {
+                            type.buildItem(cfg);
+                        }
                     }
+                    default -> type.buildItem(cfg);
                 }
-                default -> type.buildItem(cfg);
             }
-
         }
     }
 
@@ -118,7 +123,9 @@ public enum ChestChangerType {
             return;
         }
         for (ChestChangerType item : values()) {
-            item.addRecipes();
+            if (item.isAllowed()) {
+                item.addRecipes();
+            }
         }
     }
 }
