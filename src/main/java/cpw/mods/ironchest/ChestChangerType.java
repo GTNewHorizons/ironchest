@@ -102,7 +102,7 @@ public enum ChestChangerType {
                             type.buildItem(cfg);
                         }
                     }
-                    case DIAMONDDARKSTEEL -> {
+                    case DIAMONDDARKSTEEL, CRYSTALDARKSTEEL, OBSIDIANDARKSTEEL -> {
                         if (IronChestType.DARKSTEEL.isEnabled()) {
                             type.buildItem(cfg);
                         }
