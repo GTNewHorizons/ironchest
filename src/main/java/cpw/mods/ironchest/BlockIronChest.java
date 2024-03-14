@@ -217,7 +217,7 @@ public class BlockIronChest extends BlockContainer {
                 continue;
             }
 
-            if (type.isEnabled()){
+            if (type.isEnabled()) {
                 par3List.add(new ItemStack(this, 1, type.ordinal()));
             }
         }
