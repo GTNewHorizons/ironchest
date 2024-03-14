@@ -90,30 +90,8 @@ public enum ChestChangerType {
 
     public static void buildItems(Configuration cfg) {
         for (ChestChangerType type : values()) {
-            if (type.isAllowed()) {
-                switch (type) {
-                    case STEELGOLD, COPPERSTEEL -> {
-                        if (IronChestType.STEEL.isEnabled()) {
-                            type.buildItem(cfg);
-                        }
-                    }
-                    case SILVERGOLD, COPPERSILVER -> {
-                        if (IronChestType.SILVER.isEnabled()) {
-                            type.buildItem(cfg);
-                        }
-                    }
-                    case DIAMONDDARKSTEEL, CRYSTALDARKSTEEL, OBSIDIANDARKSTEEL -> {
-                        if (IronChestType.DARKSTEEL.isEnabled()) {
-                            type.buildItem(cfg);
-                        }
-                    }
-                    case OBSIDIANNETHERITE -> {
-                        if (IronChestType.NETHERITE.isEnabled()) {
-                            type.buildItem(cfg);
-                        }
-                    }
-                    default -> type.buildItem(cfg);
-                }
+            if (type.isAllowed() && (type.source.isEnabled() && type.target.isEnabled())) {
+                type.buildItem(cfg);
             }
         }
     }
