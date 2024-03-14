@@ -30,6 +30,7 @@ public class GUIChest extends GuiContainer {
         DIAMOND(new ResourceLocation("ironchest", "textures/gui/diamondcontainer.png")),
         NETHERITE(new ResourceLocation("ironchest", "textures/gui/netheritecontainer.png")),
         DARKSTEEL(new ResourceLocation("ironchest", "textures/gui/netheritecontainer.png")),
+        SILVER(new ResourceLocation("ironchest", "textures/gui/silvercontainer.png")),
         DIRT(new ResourceLocation("ironchest", "textures/gui/dirtcontainer.png"));
 
         public final ResourceLocation location;
@@ -50,7 +51,8 @@ public class GUIChest extends GuiContainer {
         OBSIDIAN(238, 256, ResourceList.DIAMOND, IronChestType.OBSIDIAN),
         DIRTCHEST9000(184, 184, ResourceList.DIRT, IronChestType.DIRTCHEST9000),
         NETHERITE(292, 256, ResourceList.NETHERITE, IronChestType.NETHERITE),
-        DARKSTEEL(292, 256, ResourceList.DARKSTEEL, IronChestType.DARKSTEEL);
+        DARKSTEEL(292, 256, ResourceList.DARKSTEEL, IronChestType.DARKSTEEL),
+        SILVER(184, 238, ResourceList.SILVER, IronChestType.SILVER);
 
         private final int xSize;
         private final int ySize;

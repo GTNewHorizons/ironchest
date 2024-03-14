@@ -213,34 +213,13 @@ public class BlockIronChest extends BlockContainer {
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(Item par1, CreativeTabs par2CreativeTabs, List par3List) {
         for (IronChestType type : IronChestType.values()) {
-
             if (!type.isValidForCreativeMode()) {
                 continue;
             }
-            switch (type) {
-                case STEEL -> {
-                    if (IronChestType.STEEL.isEnabled()) {
-                        par3List.add(new ItemStack(this, 1, type.ordinal()));
-                    }
-                }
-                case SILVER -> {
-                    if (IronChestType.SILVER.isEnabled()) {
-                        par3List.add(new ItemStack(this, 1, type.ordinal()));
-                    }
-                }
-                case DARKSTEEL -> {
-                    if (IronChestType.DARKSTEEL.isEnabled()) {
-                        par3List.add(new ItemStack(this, 1, type.ordinal()));
-                    }
-                }
-                case NETHERITE -> {
-                    if (IronChestType.NETHERITE.isEnabled()) {
-                        par3List.add(new ItemStack(this, 1, type.ordinal()));
-                    }
-                }
-                default -> par3List.add(new ItemStack(this, 1, type.ordinal()));
-            }
 
+            if (type.isEnabled()){
+                par3List.add(new ItemStack(this, 1, type.ordinal()));
+            }
         }
     }
 
