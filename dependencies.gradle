@@ -1,6 +1,6 @@
 // Add your dependencies here
 
 dependencies {
-    compileOnly("com.github.GTNewHorizons:inventory-tweaks:1.6.2:api")
-    implementation('com.github.GTNewHorizons:NotEnoughItems:2.5.24-GTNH:dev')
+    compileOnly("com.github.GTNewHorizons:inventory-tweaks:1.7.0:api")
+    implementation('com.github.GTNewHorizons:NotEnoughItems:2.6.34-GTNH:dev')
 }
