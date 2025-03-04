@@ -11,6 +11,16 @@ tile.ironchest:CRYSTAL.name=Crystal Chest
 tile.ironchest:OBSIDIAN.name=Obsidian Chest
 tile.ironchest:DIRTCHEST9000.name=DirtChest 9000!
 
+tile.ironchest:BARREL_IRON.name=Iron Barrel
+tile.ironchest:BARREL_GOLD.name=Gold Barrel
+tile.ironchest:BARREL_DIAMOND.name=Diamond Barrel
+tile.ironchest:BARREL_NETHERITE.name=Netherite Barrel
+tile.ironchest:BARREL_DARKSTEEL.name=Dark Steel Barrel
+tile.ironchest:BARREL_COPPER.name=Copper Barrel
+tile.ironchest:BARREL_STEEL.name=Steel Barrel
+tile.ironchest:BARREL_SILVER.name=Silver Barrel
+tile.ironchest:BARREL_OBSIDIAN.name=Obsidian Barrel
+
 item.ironchest:IRONGOLD.name=Iron to Gold Chest Upgrade
 item.ironchest:GOLDDIAMOND.name=Gold to Diamond Chest Upgrade
 item.ironchest:COPPERSTEEL.name=Copper to Steel Chest Upgrade

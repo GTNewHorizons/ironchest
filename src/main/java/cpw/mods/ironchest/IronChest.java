@@ -15,7 +15,6 @@ import net.minecraftforge.oredict.OreDictionary;
 import org.apache.logging.log4j.Level;
 
 import cpw.mods.fml.common.FMLLog;
-import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -26,6 +25,13 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.ironchest.blocks.barrel.IronBarrelType;
+import cpw.mods.ironchest.blocks.chest.BlockIronChest;
+import cpw.mods.ironchest.blocks.chest.IronChestType;
+import cpw.mods.ironchest.items.chest.ChestChangerType;
+import cpw.mods.ironchest.items.chest.ItemIronChest;
+import cpw.mods.ironchest.network.PacketHandler;
+import cpw.mods.ironchest.proxy.CommonProxy;
 
 @Mod(
         modid = "IronChest",
@@ -35,7 +41,9 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class IronChest {
 
     public static BlockIronChest ironChestBlock;
-    @SidedProxy(clientSide = "cpw.mods.ironchest.client.ClientProxy", serverSide = "cpw.mods.ironchest.CommonProxy")
+    @SidedProxy(
+            clientSide = "cpw.mods.ironchest.proxy.ClientProxy",
+            serverSide = "cpw.mods.ironchest.proxy.CommonProxy")
     public static CommonProxy proxy;
     @Instance("IronChest")
     public static IronChest instance;
@@ -53,7 +61,6 @@ public class IronChest {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        isGTNHLoaded = Loader.isModLoaded("dreamcraft");
         Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());
         try {
             cfg.load();
@@ -93,6 +100,7 @@ public class IronChest {
         }
         ironChestBlock = new BlockIronChest();
         GameRegistry.registerBlock(ironChestBlock, ItemIronChest.class, "BlockIronChest");
+        ModBlocks.init();
         PacketHandler.INSTANCE.ordinal();
     }
 
@@ -101,6 +109,9 @@ public class IronChest {
         for (IronChestType typ : IronChestType.values()) {
             GameRegistry.registerTileEntityWithAlternatives(typ.clazz, "IronChest." + typ.name(), typ.name());
             proxy.registerTileEntitySpecialRenderer(typ);
+        }
+        for (IronBarrelType typ : IronBarrelType.values()) {
+            GameRegistry.registerTileEntityWithAlternatives(typ.clazz, "IronBarrel." + typ.name(), typ.name());
         }
         OreDictionary.registerOre("chestWood", Blocks.chest);
         IronChestType.registerBlocksAndRecipes(ironChestBlock);

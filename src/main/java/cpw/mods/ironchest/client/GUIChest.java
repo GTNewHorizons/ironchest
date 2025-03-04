@@ -15,23 +15,25 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import cpw.mods.ironchest.ContainerIronChest;
-import cpw.mods.ironchest.IronChestType;
-import cpw.mods.ironchest.TileEntityIronChest;
+import cpw.mods.ironchest.blocks.barrel.IronBarrelType;
+import cpw.mods.ironchest.blocks.chest.IronChestType;
+import cpw.mods.ironchest.gui.chest.ContainerIronChest;
+import cpw.mods.ironchest.tileentity.barrel.TileEntityIronBarrel;
+import cpw.mods.ironchest.tileentity.chest.TileEntityIronChest;
 
 public class GUIChest extends GuiContainer {
 
     public enum ResourceList {
 
-        IRON(new ResourceLocation("ironchest", "textures/gui/ironcontainer.png")),
-        COPPER(new ResourceLocation("ironchest", "textures/gui/coppercontainer.png")),
-        STEEL(new ResourceLocation("ironchest", "textures/gui/silvercontainer.png")),
-        GOLD(new ResourceLocation("ironchest", "textures/gui/goldcontainer.png")),
-        DIAMOND(new ResourceLocation("ironchest", "textures/gui/diamondcontainer.png")),
-        NETHERITE(new ResourceLocation("ironchest", "textures/gui/netheritecontainer.png")),
-        DARKSTEEL(new ResourceLocation("ironchest", "textures/gui/netheritecontainer.png")),
-        SILVER(new ResourceLocation("ironchest", "textures/gui/silvercontainer.png")),
-        DIRT(new ResourceLocation("ironchest", "textures/gui/dirtcontainer.png"));
+        IRON(new ResourceLocation("ironchest", "textures/gui/iron.png")),
+        COPPER(new ResourceLocation("ironchest", "textures/gui/copper.png")),
+        STEEL(new ResourceLocation("ironchest", "textures/gui/silver.png")),
+        GOLD(new ResourceLocation("ironchest", "textures/gui/gold.png")),
+        DIAMOND(new ResourceLocation("ironchest", "textures/gui/diamond.png")),
+        NETHERITE(new ResourceLocation("ironchest", "textures/gui/netherite.png")),
+        DARKSTEEL(new ResourceLocation("ironchest", "textures/gui/netherite.png")),
+        SILVER(new ResourceLocation("ironchest", "textures/gui/silver.png")),
+        DIRT(new ResourceLocation("ironchest", "textures/gui/dirt.png"));
 
         public final ResourceLocation location;
 
@@ -42,29 +44,31 @@ public class GUIChest extends GuiContainer {
 
     public enum GUI {
 
-        IRON(184, 202, ResourceList.IRON, IronChestType.IRON),
-        GOLD(184, 256, ResourceList.GOLD, IronChestType.GOLD),
-        DIAMOND(238, 256, ResourceList.DIAMOND, IronChestType.DIAMOND),
-        COPPER(184, 184, ResourceList.COPPER, IronChestType.COPPER),
-        STEEL(184, 238, ResourceList.STEEL, IronChestType.STEEL),
-        CRYSTAL(238, 256, ResourceList.DIAMOND, IronChestType.CRYSTAL),
-        OBSIDIAN(238, 256, ResourceList.DIAMOND, IronChestType.OBSIDIAN),
-        DIRTCHEST9000(184, 184, ResourceList.DIRT, IronChestType.DIRTCHEST9000),
-        NETHERITE(292, 256, ResourceList.NETHERITE, IronChestType.NETHERITE),
-        DARKSTEEL(292, 256, ResourceList.DARKSTEEL, IronChestType.DARKSTEEL),
-        SILVER(184, 238, ResourceList.SILVER, IronChestType.SILVER);
+        IRON(184, 202, ResourceList.IRON, IronChestType.IRON, IronBarrelType.BARREL_IRON),
+        GOLD(184, 256, ResourceList.GOLD, IronChestType.GOLD, IronBarrelType.BARREL_GOLD),
+        DIAMOND(238, 256, ResourceList.DIAMOND, IronChestType.DIAMOND, IronBarrelType.BARREL_DIAMOND),
+        COPPER(184, 184, ResourceList.COPPER, IronChestType.COPPER, IronBarrelType.BARREL_COPPER),
+        STEEL(184, 238, ResourceList.STEEL, IronChestType.STEEL, IronBarrelType.BARREL_STEEL),
+        CRYSTAL(238, 256, ResourceList.DIAMOND, IronChestType.CRYSTAL, IronBarrelType.BARREL_DIAMOND),
+        OBSIDIAN(238, 256, ResourceList.DIAMOND, IronChestType.OBSIDIAN, IronBarrelType.BARREL_OBSIDIAN),
+        DIRTCHEST9000(184, 184, ResourceList.DIRT, IronChestType.DIRTCHEST9000, IronBarrelType.BARREL_IRON),
+        NETHERITE(292, 256, ResourceList.NETHERITE, IronChestType.NETHERITE, IronBarrelType.BARREL_NETHERITE),
+        DARKSTEEL(292, 256, ResourceList.DARKSTEEL, IronChestType.DARKSTEEL, IronBarrelType.BARREL_DARKSTEEL),
+        SILVER(184, 238, ResourceList.SILVER, IronChestType.SILVER, IronBarrelType.BARREL_SILVER);
 
         private final int xSize;
         private final int ySize;
         private final ResourceList guiResourceList;
         private final IronChestType mainType;
+        private final IronBarrelType barrelType;
 
-        private GUI(int xSize, int ySize, ResourceList guiResourceList, IronChestType mainType) {
+        private GUI(int xSize, int ySize, ResourceList guiResourceList, IronChestType mainType,
+                IronBarrelType barrelType) {
             this.xSize = xSize;
             this.ySize = ySize;
             this.guiResourceList = guiResourceList;
             this.mainType = mainType;
-
+            this.barrelType = barrelType;
         }
 
         protected Container makeContainer(IInventory player, IInventory chest) {
@@ -76,6 +80,16 @@ public class GUIChest extends GuiContainer {
             for (GUI gui : values()) {
                 if (gui.mainType.ordinal() == chestTypeIndex) {
                     return new GUIChest(gui, playerInventory, chestInventory);
+                }
+            }
+            return null;
+        }
+
+        public static GUIChest buildGUI(int chestTypeIndex, IInventory playerInventory,
+                TileEntityIronBarrel ironBarrel) {
+            for (GUI gui : values()) {
+                if (gui.barrelType.ordinal() == chestTypeIndex) {
+                    return new GUIChest(gui, playerInventory, ironBarrel);
                 }
             }
             return null;

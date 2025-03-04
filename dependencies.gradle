@@ -3,4 +3,7 @@
 dependencies {
     compileOnly("com.github.GTNewHorizons:inventory-tweaks:1.7.0:api")
     implementation('com.github.GTNewHorizons:NotEnoughItems:2.7.18-GTNH:dev')
+
+    implementation(rfg.deobf("curse.maven:et-futurum-requiem-441392:5873837"))
+    //compileOnly(rfg.deobf("curse.maven:et-futurum-requiem-441392:5873837"))
 }
