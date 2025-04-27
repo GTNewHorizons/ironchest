@@ -2,5 +2,6 @@
 
 dependencies {
     compileOnly("com.github.GTNewHorizons:inventory-tweaks:1.7.1:api")
+    compileOnly("com.github.GTNewHorizons:WDMla:2.5.0:dev")
     implementation('com.github.GTNewHorizons:NotEnoughItems:2.7.29-GTNH:dev')
 }
