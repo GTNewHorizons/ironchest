@@ -290,13 +290,20 @@ public class BlockIronChest extends BlockContainer {
     }
 
     private static boolean isOcelotSitting(World world, int x, int y, int z) {
-        if(!IronChest.OCELOTS_BLOCKCHESTS) return false;
+        if (!IronChest.OCELOTS_BLOCKCHESTS) return false;
 
         @SuppressWarnings("unchecked")
-        List<EntityOcelot> cats = world.getEntitiesWithinAABB(EntityOcelot.class, AxisAlignedBB.getBoundingBox(
-            (double)x, (double)(y + 1), (double)z, (double)(x + 1), (double)(y + 2), (double)(z + 1)));
-        for(EntityOcelot cat : cats) {
-            if(cat.isSitting()) {
+        List<EntityOcelot> cats = world.getEntitiesWithinAABB(
+                EntityOcelot.class,
+                AxisAlignedBB.getBoundingBox(
+                        (double) x,
+                        (double) (y + 1),
+                        (double) z,
+                        (double) (x + 1),
+                        (double) (y + 2),
+                        (double) (z + 1)));
+        for (EntityOcelot cat : cats) {
+            if (cat.isSitting()) {
                 // There are cats in the block above this chest and at least one of them is sitting.
                 return true;
             }

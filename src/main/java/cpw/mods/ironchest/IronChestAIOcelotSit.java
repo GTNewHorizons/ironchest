@@ -11,11 +11,12 @@ public class IronChestAIOcelotSit extends EntityAIOcelotSit {
         super(ocelot, navigationSpeed);
     }
 
-    @Override public boolean func_151486_a(World world, int x, int y, int z) {
+    @Override
+    public boolean func_151486_a(World world, int x, int y, int z) {
         Block targetBlock = world.getBlock(x, y, z);
         if (targetBlock == IronChest.ironChestBlock) {
-            TileEntityIronChest chest = (TileEntityIronChest)world.getTileEntity(x, y, z);
-            if(chest.getNumUsingPlayers() == 0) {
+            TileEntityIronChest chest = (TileEntityIronChest) world.getTileEntity(x, y, z);
+            if (chest.getNumUsingPlayers() == 0) {
                 return true;
             }
         }
