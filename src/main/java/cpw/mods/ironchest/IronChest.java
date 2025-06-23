@@ -39,7 +39,6 @@ public class IronChest {
     public static CommonProxy proxy;
     @Instance("IronChest")
     public static IronChest instance;
-    public static boolean CACHE_RENDER = true;
     public static boolean OCELOTS_SITONCHESTS = true;
     public static final String VERSION = "GRADLETOKEN_VERSION";
     public static boolean TRANSPARENT_RENDER_INSIDE = true;
@@ -57,7 +56,6 @@ public class IronChest {
         Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());
         try {
             cfg.load();
-            CACHE_RENDER = cfg.get(Configuration.CATEGORY_GENERAL, "cacheRenderingInformation", true).getBoolean(true);
             OCELOTS_SITONCHESTS = cfg.get(Configuration.CATEGORY_GENERAL, "ocelotsSitOnChests", true).getBoolean(true);
             TRANSPARENT_RENDER_INSIDE = cfg
                     .get(
