@@ -82,7 +82,7 @@ public class IronChest {
                     Configuration.CATEGORY_GENERAL,
                     "enableDarkSteelChests",
                     isGTNHLoaded,
-                    "Enables the dark steel.").getBoolean(isGTNHLoaded);
+                    "Enables the dark steel chest.").getBoolean(isGTNHLoaded);
             ENABLE_NETHERITE_CHESTS = cfg.get(
                     Configuration.CATEGORY_GENERAL,
                     "enableNetheriteChests",
