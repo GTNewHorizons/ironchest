@@ -6,8 +6,8 @@ import net.minecraft.world.World;
 
 public class IronChestAIOcelotSit extends EntityAIOcelotSit {
 
-    public IronChestAIOcelotSit(EntityOcelot par1EntityOcelot, float par2) {
-        super(par1EntityOcelot, par2);
+    public IronChestAIOcelotSit(EntityOcelot ocelot, double navigationSpeed) {
+        super(ocelot, navigationSpeed);
     }
 
     @Override public boolean func_151486_a(World world, int x, int y, int z) {

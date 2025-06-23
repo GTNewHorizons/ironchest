@@ -21,7 +21,7 @@ public class OcelotsSitOnChestsHandler {
             for (EntityAITasks.EntityAITaskEntry task : tasks) {
                 if (task.priority == 6 && (task.action instanceof EntityAIOcelotSit)
                         && !(task.action instanceof IronChestAIOcelotSit)) {
-                    task.action = new IronChestAIOcelotSit(ocelot, 0.4F);
+                    task.action = new IronChestAIOcelotSit(ocelot, 1.33D);
                 }
             }
         }
