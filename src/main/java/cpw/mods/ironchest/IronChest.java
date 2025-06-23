@@ -41,6 +41,7 @@ public class IronChest {
     public static IronChest instance;
     public static boolean CACHE_RENDER = true;
     public static boolean OCELOTS_SITONCHESTS = true;
+    public static boolean OCELOTS_BLOCKCHESTS = true;
     public static final String VERSION = "GRADLETOKEN_VERSION";
     public static boolean TRANSPARENT_RENDER_INSIDE = true;
     public static double TRANSPARENT_RENDER_DISTANCE = 128D;
@@ -58,7 +59,10 @@ public class IronChest {
         try {
             cfg.load();
             CACHE_RENDER = cfg.get(Configuration.CATEGORY_GENERAL, "cacheRenderingInformation", true).getBoolean(true);
-            OCELOTS_SITONCHESTS = cfg.get(Configuration.CATEGORY_GENERAL, "ocelotsSitOnChests", true).getBoolean(true);
+            OCELOTS_SITONCHESTS = cfg.get(Configuration.CATEGORY_GENERAL, "ocelotsSitOnChests", true,
+                    "Whether or not to allow Ocelots to sit on Iron Chests.").getBoolean(true);
+            OCELOTS_BLOCKCHESTS = cfg.get(Configuration.CATEGORY_GENERAL, "ocelotsBlockChests", true,
+                    "Whether or not Ocelots should prevent opening Iron Chests when sitting on top of them.").getBoolean(true);
             TRANSPARENT_RENDER_INSIDE = cfg.get(Configuration.CATEGORY_GENERAL, "transparentRenderInside", true)
                     .getBoolean(true);
             TRANSPARENT_RENDER_DISTANCE = cfg.get(Configuration.CATEGORY_GENERAL, "transparentRenderDistance", 128D)
