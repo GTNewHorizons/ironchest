@@ -39,7 +39,6 @@ public class IronChest {
     public static CommonProxy proxy;
     @Instance("IronChest")
     public static IronChest instance;
-    public static boolean CACHE_RENDER = true;
     public static boolean OCELOTS_SITONCHESTS = true;
     public static final String VERSION = "GRADLETOKEN_VERSION";
     public static boolean TRANSPARENT_RENDER_INSIDE = true;
@@ -57,11 +56,19 @@ public class IronChest {
         Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());
         try {
             cfg.load();
-            CACHE_RENDER = cfg.get(Configuration.CATEGORY_GENERAL, "cacheRenderingInformation", true).getBoolean(true);
             OCELOTS_SITONCHESTS = cfg.get(Configuration.CATEGORY_GENERAL, "ocelotsSitOnChests", true).getBoolean(true);
-            TRANSPARENT_RENDER_INSIDE = cfg.get(Configuration.CATEGORY_GENERAL, "transparentRenderInside", true)
+            TRANSPARENT_RENDER_INSIDE = cfg
+                    .get(
+                            Configuration.CATEGORY_GENERAL,
+                            "transparentRenderInside",
+                            true,
+                            "Whether or not transparent chests (i.e. crystal) should display their contents.")
                     .getBoolean(true);
-            TRANSPARENT_RENDER_DISTANCE = cfg.get(Configuration.CATEGORY_GENERAL, "transparentRenderDistance", 128D)
+            TRANSPARENT_RENDER_DISTANCE = cfg.get(
+                    Configuration.CATEGORY_GENERAL,
+                    "transparentRenderDistance",
+                    128D,
+                    "Maximum distance from a transparent chest, after which its contents will stop being displayed.")
                     .getDouble(128D);
             ENABLE_STEEL_CHESTS = cfg
                     .get(Configuration.CATEGORY_GENERAL, "enableSteelChests", true, "Enables the steel chest.")
@@ -73,7 +80,7 @@ public class IronChest {
                     Configuration.CATEGORY_GENERAL,
                     "enableDarkSteelChests",
                     isGTNHLoaded,
-                    "Enables the dark steel.").getBoolean(isGTNHLoaded);
+                    "Enables the dark steel chest.").getBoolean(isGTNHLoaded);
             ENABLE_NETHERITE_CHESTS = cfg.get(
                     Configuration.CATEGORY_GENERAL,
                     "enableNetheriteChests",
