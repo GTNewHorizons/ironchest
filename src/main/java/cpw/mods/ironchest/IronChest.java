@@ -73,7 +73,11 @@ public class IronChest {
                     .getBoolean(true);
             TRANSPARENT_RENDER_INSIDE = cfg.get(Configuration.CATEGORY_GENERAL, "transparentRenderInside", true)
                     .getBoolean(true);
-            TRANSPARENT_RENDER_DISTANCE = cfg.get(Configuration.CATEGORY_GENERAL, "transparentRenderDistance", 128D)
+            TRANSPARENT_RENDER_DISTANCE = cfg.get(
+                    Configuration.CATEGORY_GENERAL,
+                    "transparentRenderDistance",
+                    128D,
+                    "Maximum distance from a transparent chest, after which its contents will stop being displayed.")
                     .getDouble(128D);
             ENABLE_STEEL_CHESTS = cfg
                     .get(Configuration.CATEGORY_GENERAL, "enableSteelChests", true, "Enables the steel chest.")
@@ -85,7 +89,7 @@ public class IronChest {
                     Configuration.CATEGORY_GENERAL,
                     "enableDarkSteelChests",
                     isGTNHLoaded,
-                    "Enables the dark steel.").getBoolean(isGTNHLoaded);
+                    "Enables the dark steel chest.").getBoolean(isGTNHLoaded);
             ENABLE_NETHERITE_CHESTS = cfg.get(
                     Configuration.CATEGORY_GENERAL,
                     "enableNetheriteChests",

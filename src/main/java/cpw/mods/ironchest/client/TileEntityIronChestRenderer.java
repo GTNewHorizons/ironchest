@@ -21,7 +21,6 @@ import java.util.Map;
 import java.util.Random;
 
 import net.minecraft.client.model.ModelChest;
-import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
@@ -63,7 +62,6 @@ public class TileEntityIronChestRenderer extends TileEntitySpecialRenderer {
     public TileEntityIronChestRenderer() {
         model = new ModelChest();
         random = new Random();
-        RenderBlocks renderBlocks = new RenderBlocks();
         itemRenderer = new RenderItem() {
 
             @Override
