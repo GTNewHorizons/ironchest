@@ -40,6 +40,7 @@ public class IronChest {
     @Instance("IronChest")
     public static IronChest instance;
     public static boolean OCELOTS_SITONCHESTS = true;
+    public static boolean OCELOTS_BLOCKCHESTS = true;
     public static final String VERSION = "GRADLETOKEN_VERSION";
     public static boolean TRANSPARENT_RENDER_INSIDE = true;
     public static double TRANSPARENT_RENDER_DISTANCE = 128D;
@@ -56,7 +57,18 @@ public class IronChest {
         Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());
         try {
             cfg.load();
-            OCELOTS_SITONCHESTS = cfg.get(Configuration.CATEGORY_GENERAL, "ocelotsSitOnChests", true).getBoolean(true);
+            OCELOTS_SITONCHESTS = cfg.get(
+                    Configuration.CATEGORY_GENERAL,
+                    "ocelotsSitOnChests",
+                    true,
+                    "Whether or not to allow Ocelots to sit on Iron Chests.").getBoolean(true);
+            OCELOTS_BLOCKCHESTS = cfg
+                    .get(
+                            Configuration.CATEGORY_GENERAL,
+                            "ocelotsBlockChests",
+                            true,
+                            "Whether or not Ocelots should prevent opening Iron Chests when sitting on top of them.")
+                    .getBoolean(true);
             TRANSPARENT_RENDER_INSIDE = cfg
                     .get(
                             Configuration.CATEGORY_GENERAL,
@@ -114,10 +126,9 @@ public class IronChest {
         ChestChangerType.generateRecipes();
         NetworkRegistry.INSTANCE.registerGuiHandler(instance, proxy);
         proxy.registerRenderInformation();
-        // if (OCELOTS_SITONCHESTS)
-        // {
-        // MinecraftForge.EVENT_BUS.register(new OcelotsSitOnChestsHandler());
-        // }
+        if (OCELOTS_SITONCHESTS) {
+            MinecraftForge.EVENT_BUS.register(new OcelotsSitOnChestsHandler());
+        }
         MinecraftForge.EVENT_BUS.register(this);
     }
 

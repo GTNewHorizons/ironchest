@@ -22,6 +22,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.passive.EntityOcelot;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
@@ -29,6 +30,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
@@ -116,6 +118,12 @@ public class BlockIronChest extends BlockContainer {
         }
 
         if (world.isRemote) {
+            return true;
+        }
+
+        if (isOcelotSitting(world, i, j, k)) {
+            // One or more Ocelots are sitting on this chest. Return true as if the player successfully used the chest,
+            // but don't open the chest!
             return true;
         }
 
@@ -278,6 +286,30 @@ public class BlockIronChest extends BlockContainer {
             }
             return true;
         }
+        return false;
+    }
+
+    private static boolean isOcelotSitting(World world, int x, int y, int z) {
+        if (!IronChest.OCELOTS_BLOCKCHESTS) return false;
+
+        @SuppressWarnings("unchecked")
+        List<EntityOcelot> cats = world.getEntitiesWithinAABB(
+                EntityOcelot.class,
+                AxisAlignedBB.getBoundingBox(
+                        (double) x,
+                        (double) (y + 1),
+                        (double) z,
+                        (double) (x + 1),
+                        (double) (y + 2),
+                        (double) (z + 1)));
+        for (EntityOcelot cat : cats) {
+            if (cat.isSitting()) {
+                // There are cats in the block above this chest and at least one of them is sitting.
+                return true;
+            }
+        }
+
+        // No cats or none of them are sitting. :(
         return false;
     }
 

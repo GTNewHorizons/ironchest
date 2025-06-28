@@ -69,6 +69,10 @@ public class TileEntityIronChest extends TileEntity implements IInventory {
         return type;
     }
 
+    public int getNumUsingPlayers() {
+        return numUsingPlayers;
+    }
+
     @Override
     public ItemStack getStackInSlot(int i) {
         inventoryTouched = true;
