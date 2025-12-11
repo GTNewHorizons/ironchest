@@ -129,7 +129,6 @@ public class IronChest {
         if (OCELOTS_SITONCHESTS) {
             MinecraftForge.EVENT_BUS.register(new OcelotsSitOnChestsHandler());
         }
-        MinecraftForge.EVENT_BUS.register(this);
     }
 
     @EventHandler
