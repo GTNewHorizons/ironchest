@@ -35,29 +35,6 @@ public class ItemIronChest extends ItemBlock {
 
     @Override
     public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advanced) {
-        switch (stack.getItemDamage()) {
-            case 0:
-                tooltip.add(StatCollector.translateToLocal("tile.ironchest:IRON.tooltip"));
-                break;
-            case 1:
-                tooltip.add(StatCollector.translateToLocal("tile.ironchest:GOLD.tooltip"));
-                break;
-            case 2:
-            case 5:
-                tooltip.add(StatCollector.translateToLocal("tile.ironchest:DIAMOND.tooltip"));
-                break;
-            case 3:
-                tooltip.add(StatCollector.translateToLocal("tile.ironchest:COPPER.tooltip"));
-                break;
-            case 4:
-                tooltip.add(StatCollector.translateToLocal("tile.ironchest:STEEL.tooltip"));
-                break;
-            case 6:
-                tooltip.add(StatCollector.translateToLocal("tile.ironchest:OBSIDIAN.tooltip"));
-                break;
-            case 9:
-                tooltip.add(StatCollector.translateToLocal("tile.ironchest:DARKSTEEL.tooltip"));
-                break;
-        }
+        tooltip.add(StatCollector.translateToLocal(getUnlocalizedName(stack) + ".tooltip"));
     }
 }
