@@ -36,7 +36,6 @@ public class ItemIronChest extends ItemBlock {
         return "tile.ironchest:" + IronChestType.values()[itemstack.getItemDamage()].name();
     }
 
-    @SideOnly(Side.CLIENT)
     @Override
     public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advanced) {
         switch (stack.getItemDamage()) {
