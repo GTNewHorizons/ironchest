@@ -38,7 +38,7 @@ public class ItemIronChest extends ItemBlock {
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void addInformation(ItemStack stack, EntityPlayer player, List tooltip, boolean advanced) {
+    public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advanced) {
         switch (stack.getItemDamage()) {
             case 0:
                 tooltip.add(StatCollector.translateToLocal("tile.ironchest:IRON.tooltip"));
