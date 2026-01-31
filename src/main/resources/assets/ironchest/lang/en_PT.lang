@@ -1,12 +1,22 @@
+tile.IronChest.name=Chest
 tile.ironchest:IRON.name=Steel Coffer
 tile.ironchest:GOLD.name=Gold Coffer
 tile.ironchest:DIAMOND.name=Diamond Coffer
+tile.ironchest:NETHERITE.name=Netherite Chest
+tile.ironchest:DARKSTEEL.name=Dark Steel Chest
 tile.ironchest:COPPER.name=Copper Coffer
 tile.ironchest:STEEL.name=Steel Coffer
 tile.ironchest:SILVER.name=Silver Coffer
 tile.ironchest:CRYSTAL.name=Shinin' Coffer
 tile.ironchest:OBSIDIAN.name=Coffer o' tears
 tile.ironchest:DIRTCHEST9000.name=FilthCoffer 9000!
+tile.ironchest:IRON.tooltip=Inventory 6×9 — 54 Slots
+tile.ironchest:GOLD.tooltip=Inventory 9×9 — 81 Slots
+tile.ironchest:DIAMOND.tooltip=Inventory 12×9 — 108 Slots
+tile.ironchest:COPPER.tooltip=Inventory 5×9 — 45 Slots
+tile.ironchest:STEEL.tooltip=Inventory 8×9 — 72 Slots
+tile.ironchest:DARKSTEEL.tooltip=15*9 Inventory - 135 Slots
+tile.ironchest:OBSIDIAN.tooltip=Inventory 12×9 — 108 Slots §4Blast Proof
 
 item.ironchest:IRONGOLD.name=Steel to Gold Coffer Upgradin'
 item.ironchest:GOLDDIAMOND.name=Gold to Diamond Coffer Upgradin'
@@ -19,6 +29,14 @@ item.ironchest:DIAMONDCRYSTAL.name=Diamond to Shinin' Coffer Upgradin'
 item.ironchest:WOODIRON.name=Timber to Steel Coffer Upgradin'
 item.ironchest:WOODCOPPER.name=Wood to Copper Coffer Upgradin'
 item.ironchest:DIAMONDOBSIDIAN.name=Diamond to Coffer o' Tears Upgradin'
+item.ironchest:OBSIDIANNETHERITE.name=Obsidian to Netherite Chest Upgrade
+item.ironchest:DIAMONDDARKSTEEL.name=Diamond to Dark Steel Chest Upgrade
+item.ironchest:DIAMONDNETHERITE.name=Diamond to Netherite Chest Upgrade
+item.ironchest:CRYSTALNETHERITE.name=Crystal to Netherite Chest Upgrade
+item.ironchest:CRYSTALDARKSTEEL.name=Crystal to Dark Steel Chest Upgrade
+item.ironchest:OBSIDIANDARKSTEEL.name=Obsidian to Dark Steel Chest Upgrade
+item.ironchest:IRONSTEEL.name=Iron to Steel Chest Upgrade
+item.ironchest:IRONSILVER.name=Iron to Silver Chest Upgrade
 
 book.ironchest:dirtchest9000.title=How to use yer FilthCoffer 9000!
 book.ironchest:dirtchest9000.page1=Welcome to yer new FilthCoffer 9000! We hope ye will enjoy many happy years of storing yer filth wit yer coffer .

@@ -1,12 +1,22 @@
+tile.IronChest.name=Chest
 tile.ironchest:IRON.name=Baule di ferro
 tile.ironchest:GOLD.name=Baule d'oro
 tile.ironchest:DIAMOND.name=Baule di diamante
+tile.ironchest:NETHERITE.name=Netherite Chest
+tile.ironchest:DARKSTEEL.name=Dark Steel Chest
 tile.ironchest:COPPER.name=Baule di rame
 tile.ironchest:STEEL.name=Baule d'argento
 tile.ironchest:SILVER.name=Baule d'argento
 tile.ironchest:CRYSTAL.name=Baule di cristallo
 tile.ironchest:OBSIDIAN.name=Baule di ossidiana
 tile.ironchest:DIRTCHEST9000.name=DirtChest 9000!
+tile.ironchest:IRON.tooltip=Inventory 6×9 — 54 Slots
+tile.ironchest:GOLD.tooltip=Inventory 9×9 — 81 Slots
+tile.ironchest:DIAMOND.tooltip=Inventory 12×9 — 108 Slots
+tile.ironchest:COPPER.tooltip=Inventory 5×9 — 45 Slots
+tile.ironchest:STEEL.tooltip=Inventory 8×9 — 72 Slots
+tile.ironchest:DARKSTEEL.tooltip=15*9 Inventory - 135 Slots
+tile.ironchest:OBSIDIAN.tooltip=Inventory 12×9 — 108 Slots §4Blast Proof
 
 item.ironchest:IRONGOLD.name=Potenziamento da ferro a oro
 item.ironchest:GOLDDIAMOND.name=Potenziamento da oro a diamante
@@ -19,6 +29,14 @@ item.ironchest:DIAMONDCRYSTAL.name=Potenziamento da diamante a cristallo
 item.ironchest:WOODIRON.name=Potenziamento da legno a ferro
 item.ironchest:WOODCOPPER.name=Potenziamento da legno a rame
 item.ironchest:DIAMONDOBSIDIAN.name=Potenziamento da diamante a ossidiana
+item.ironchest:OBSIDIANNETHERITE.name=Obsidian to Netherite Chest Upgrade
+item.ironchest:DIAMONDDARKSTEEL.name=Diamond to Dark Steel Chest Upgrade
+item.ironchest:DIAMONDNETHERITE.name=Diamond to Netherite Chest Upgrade
+item.ironchest:CRYSTALNETHERITE.name=Crystal to Netherite Chest Upgrade
+item.ironchest:CRYSTALDARKSTEEL.name=Crystal to Dark Steel Chest Upgrade
+item.ironchest:OBSIDIANDARKSTEEL.name=Obsidian to Dark Steel Chest Upgrade
+item.ironchest:IRONSTEEL.name=Iron to Steel Chest Upgrade
+item.ironchest:IRONSILVER.name=Iron to Silver Chest Upgrade
 
 book.ironchest:dirtchest9000.title=Come usare la tua DirtChest 9000!
 book.ironchest:dirtchest9000.page1=Benvenuto alla tua nuova DirtChest 9000! Speriamo che possiate godere di molti anni felici in cui imagazzinate grandi quantità di terra nei nostri contenitori.

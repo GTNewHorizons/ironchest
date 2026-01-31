@@ -1,12 +1,22 @@
+tile.IronChest.name=Chest
 tile.ironchest:IRON.name=Ijzeren Kist
 tile.ironchest:GOLD.name=Gouden Kist
 tile.ironchest:DIAMOND.name=Diamanten Kist
+tile.ironchest:NETHERITE.name=Netherite Chest
+tile.ironchest:DARKSTEEL.name=Dark Steel Chest
 tile.ironchest:COPPER.name=Koperen Kist
 tile.ironchest:STEEL.name=Zilveren Kist
 tile.ironchest:SILVER.name=Zilveren Kist
 tile.ironchest:CRYSTAL.name=Kristallen Kist
 tile.ironchest:OBSIDIAN.name=Obsidiaanen Kist
 tile.ironchest:DIRTCHEST9000.name=Aarden Kist 9000!
+tile.ironchest:IRON.tooltip=Inventory 6×9 — 54 Slots
+tile.ironchest:GOLD.tooltip=Inventory 9×9 — 81 Slots
+tile.ironchest:DIAMOND.tooltip=Inventory 12×9 — 108 Slots
+tile.ironchest:COPPER.tooltip=Inventory 5×9 — 45 Slots
+tile.ironchest:STEEL.tooltip=Inventory 8×9 — 72 Slots
+tile.ironchest:DARKSTEEL.tooltip=15*9 Inventory - 135 Slots
+tile.ironchest:OBSIDIAN.tooltip=Inventory 12×9 — 108 Slots §4Blast Proof
 
 item.ironchest:IRONGOLD.name=Ijzeren naar Gouden Kist Transformatie
 item.ironchest:GOLDDIAMOND.name=Gouden naar Diamanten Kist Transformatie
@@ -19,6 +29,14 @@ item.ironchest:DIAMONDCRYSTAL.name=Diamanten naar Kristallen Kist Transformatie
 item.ironchest:WOODIRON.name=Houten naar Ijzeren Kist Transformatie
 item.ironchest:WOODCOPPER.name=Houten naar Koperen Kist Transformatie
 item.ironchest:DIAMONDOBSIDIAN.name=Diamanten naar Obsidiaanen Kist Transformatie
+item.ironchest:OBSIDIANNETHERITE.name=Obsidian to Netherite Chest Upgrade
+item.ironchest:DIAMONDDARKSTEEL.name=Diamond to Dark Steel Chest Upgrade
+item.ironchest:DIAMONDNETHERITE.name=Diamond to Netherite Chest Upgrade
+item.ironchest:CRYSTALNETHERITE.name=Crystal to Netherite Chest Upgrade
+item.ironchest:CRYSTALDARKSTEEL.name=Crystal to Dark Steel Chest Upgrade
+item.ironchest:OBSIDIANDARKSTEEL.name=Obsidian to Dark Steel Chest Upgrade
+item.ironchest:IRONSTEEL.name=Iron to Steel Chest Upgrade
+item.ironchest:IRONSILVER.name=Iron to Silver Chest Upgrade
 
 book.ironchest:dirtchest9000.title=Hoe gebruik je uw Aarden Kist 9000!
 book.ironchest:dirtchest9000.page1=Welkom voor uw nieuwe Aarden Kist 9000! We hopen dat je veel geluk zal beleven om uw hoop aarde te bewaren in onze stokeer faciliteit.
