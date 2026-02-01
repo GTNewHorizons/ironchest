@@ -1,11 +1,26 @@
-tile.ironchest:IRON.name=Železná truhla
-tile.ironchest:GOLD.name=Zlatá truhla
-tile.ironchest:DIAMOND.name=Diamantová truhla
+tile.IronChest.name=Chest
 tile.ironchest:COPPER.name=Měděná truhla
+tile.ironchest:IRON.name=Železná truhla
 tile.ironchest:STEEL.name=Steel truhla
 tile.ironchest:SILVER.name=Stříbrná truhla
+tile.ironchest:GOLD.name=Zlatá truhla
+tile.ironchest:DIAMOND.name=Diamantová truhla
 tile.ironchest:CRYSTAL.name=Krystalová truhla
 tile.ironchest:OBSIDIAN.name=Obsidiánová truhla
+tile.ironchest:NETHERITE.name=Netherite Chest
+tile.ironchest:DARKSTEEL.name=Dark Steel Chest
+tile.ironchest:DIRTCHEST9000.name=DirtChest 9000!
+tile.ironchest:COPPER.tooltip=Inventory 5*9 - 45 Slots
+tile.ironchest:IRON.tooltip=Inventory 6*9 - 54 Slots
+tile.ironchest:STEEL.tooltip=Inventory 8*9 - 72 Slots
+tile.ironchest:SILVER.tooltip=Inventory 8*9 - 72 Slots
+tile.ironchest:GOLD.tooltip=Inventory 9*9 - 81 Slots
+tile.ironchest:DIAMOND.tooltip=Inventory 12*9 - 108 Slots
+tile.ironchest:CRYSTAL.tooltip=Inventory 12*9 - 108 Slots
+tile.ironchest:OBSIDIAN.tooltip=Inventory 12*9 - 108 Slots §4Blast Proof
+tile.ironchest:NETHERITE.tooltip=Inventory 15*9 - 135 Slots
+tile.ironchest:DARKSTEEL.tooltip=Inventory 15*9 - 135 Slots
+tile.ironchest:DIRTCHEST9000.tooltip=Stores up to ONE stack of dirt! Revolutionary technology!
 
 item.ironchest:IRONGOLD.name=Vylepšení železné truhly na zlatou
 item.ironchest:GOLDDIAMOND.name=Vylepšení zlaté truhly na diamantovou
@@ -18,6 +33,14 @@ item.ironchest:DIAMONDCRYSTAL.name=Vylepšení diamantové truhly na krystalovou
 item.ironchest:WOODIRON.name=Vylepšení dřevěné truhly na železnou
 item.ironchest:WOODCOPPER.name=Vylepšení dřevěné truhly na měděnou
 item.ironchest:DIAMONDOBSIDIAN.name=Vylepšení diamantové truhly na obsidiánovoutile.ironchest:DIRTCHEST9000.name=DirtChest 9000!
+item.ironchest:OBSIDIANNETHERITE.name=Obsidian to Netherite Chest Upgrade
+item.ironchest:DIAMONDDARKSTEEL.name=Diamond to Dark Steel Chest Upgrade
+item.ironchest:DIAMONDNETHERITE.name=Diamond to Netherite Chest Upgrade
+item.ironchest:CRYSTALNETHERITE.name=Crystal to Netherite Chest Upgrade
+item.ironchest:CRYSTALDARKSTEEL.name=Crystal to Dark Steel Chest Upgrade
+item.ironchest:OBSIDIANDARKSTEEL.name=Obsidian to Dark Steel Chest Upgrade
+item.ironchest:IRONSTEEL.name=Iron to Steel Chest Upgrade
+item.ironchest:IRONSILVER.name=Iron to Silver Chest Upgrade
 
 book.ironchest:dirtchest9000.title=How to use your DirtChest 9000!
 book.ironchest:dirtchest9000.page1=Welcome to your new DirtChest 9000! We hope you will enjoy many happy years of storing your stack of dirt in our storage utility.
