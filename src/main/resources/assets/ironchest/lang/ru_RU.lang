@@ -20,7 +20,7 @@ tile.ironchest:CRYSTAL.tooltip=Inventory 12×9 - 108 Slots
 tile.ironchest:OBSIDIAN.tooltip=Инвентарь 12×9 - 108 слотов §4Взрывоустойчивый
 tile.ironchest:NETHERITE.tooltip=Inventory 15*9 - 135 Slots
 tile.ironchest:DARKSTEEL.tooltip=Инвентарь 15×9 - 135 слотов
-tile.ironchest:DIRTCHEST9000.tooltip=Stores up to ONE stack of dirt! Revolutionary technology!
+tile.ironchest:DIRTCHEST9000.tooltip=Вмещает до ОДНОГО стака земли! Революционная технология!
 
 item.ironchest:IRONGOLD.name=Улучшение из железного в золотой сундук
 item.ironchest:GOLDDIAMOND.name=Улучшение из золотого в алмазный сундук
