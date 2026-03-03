@@ -88,8 +88,8 @@ public class BlockIronChest extends BlockContainer {
     @SideOnly(Side.CLIENT)
     @Override
     public IIcon getIcon(int i, int j) {
-        if (j < IronChestType.values().length) {
-            IronChestType type = IronChestType.values()[j];
+        if (j < IronChestType.VALUES.length) {
+            IronChestType type = IronChestType.VALUES[j];
             return type.getIcon(i);
         }
         return null;
@@ -99,7 +99,7 @@ public class BlockIronChest extends BlockContainer {
     public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
         ArrayList<ItemStack> items = Lists.newArrayList();
         ItemStack stack = new ItemStack(this, 1, metadata);
-        IronChestType.values()[IronChestType.validateMeta(metadata)].adornItemDrop(stack);
+        IronChestType.VALUES[IronChestType.validateMeta(metadata)].adornItemDrop(stack);
         items.add(stack);
         return items;
     }
@@ -220,7 +220,7 @@ public class BlockIronChest extends BlockContainer {
     @SuppressWarnings({ "rawtypes", "unchecked" })
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(Item par1, CreativeTabs par2CreativeTabs, List par3List) {
-        for (IronChestType type : IronChestType.values()) {
+        for (IronChestType type : IronChestType.VALUES) {
             if (!type.isValidForCreativeMode()) {
                 continue;
             }
@@ -261,7 +261,7 @@ public class BlockIronChest extends BlockContainer {
     @Override
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister par1IconRegister) {
-        for (IronChestType typ : IronChestType.values()) {
+        for (IronChestType typ : IronChestType.VALUES) {
             typ.makeIcons(par1IconRegister);
         }
     }

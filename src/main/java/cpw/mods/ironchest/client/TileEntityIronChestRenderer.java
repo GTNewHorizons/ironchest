@@ -46,7 +46,7 @@ public class TileEntityIronChestRenderer extends TileEntitySpecialRenderer {
     private static final Map<IronChestType, ResourceLocation> locations;
     static {
         Builder<IronChestType, ResourceLocation> builder = ImmutableMap.<IronChestType, ResourceLocation>builder();
-        for (IronChestType typ : IronChestType.values()) {
+        for (IronChestType typ : IronChestType.VALUES) {
             builder.put(typ, new ResourceLocation("ironchest", "textures/model/" + typ.getModelTexture()));
         }
         locations = builder.build();
@@ -97,7 +97,7 @@ public class TileEntityIronChestRenderer extends TileEntitySpecialRenderer {
             facing = tile.getFacing();
             type = tile.getType();
             int typ = tile.getWorldObj().getBlockMetadata(tile.xCoord, tile.yCoord, tile.zCoord);
-            type = IronChestType.values()[typ];
+            type = IronChestType.VALUES[typ];
         }
         bindTexture(locations.get(type));
         glPushMatrix();
