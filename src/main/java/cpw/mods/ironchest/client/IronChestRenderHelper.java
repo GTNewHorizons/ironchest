@@ -24,7 +24,7 @@ public class IronChestRenderHelper extends TileEntityRendererChestHelper {
     private final Map<Integer, TileEntityIronChest> itemRenders = Maps.newHashMap();
 
     public IronChestRenderHelper() {
-        for (IronChestType typ : IronChestType.values()) {
+        for (IronChestType typ : IronChestType.VALUES) {
             itemRenders.put(
                     typ.ordinal(),
                     (TileEntityIronChest) IronChest.ironChestBlock.createTileEntity(null, typ.ordinal()));

@@ -54,6 +54,10 @@ public enum IronChestType {
             null, "mGmGPGmGm", "mmmmPmmmm", 0),
     WOOD(0, 0, -1, "", "", -1, Arrays.asList("plankWood"), null, null, null, null, 0);
 
+    /**
+     * Cached values() array for frequent read-only operations, the array should NOT be mutated.
+     */
+    public static final IronChestType[] VALUES = values();
     final int size;
     private final int rowLength;
     public final String friendlyName;

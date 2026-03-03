@@ -117,7 +117,7 @@ public class IronChest {
 
     @EventHandler
     public void load(FMLInitializationEvent evt) {
-        for (IronChestType typ : IronChestType.values()) {
+        for (IronChestType typ : IronChestType.VALUES) {
             GameRegistry.registerTileEntityWithAlternatives(typ.clazz, "IronChest." + typ.name(), typ.name());
             proxy.registerTileEntitySpecialRenderer(typ);
         }

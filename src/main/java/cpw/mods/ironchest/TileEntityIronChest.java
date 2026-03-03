@@ -379,7 +379,7 @@ public class TileEntityIronChest extends TileEntity implements IInventory {
         if (this.type.ordinal() != typeData) {
             chest = updateFromMetadata(typeData);
         }
-        if (IronChestType.values()[typeData].isTransparent() && intData != null) {
+        if (IronChestType.VALUES[typeData].isTransparent() && intData != null) {
             int pos = 0;
             for (int i = 0; i < chest.topStacks.length; i++) {
                 if (intData[pos] != null) {
