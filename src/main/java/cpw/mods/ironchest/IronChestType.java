@@ -148,7 +148,7 @@ public enum IronChestType {
         int chesttype = validateMeta(metadata);
         if (chesttype == metadata) {
             try {
-                return values()[chesttype].clazz.newInstance();
+                return VALUES[chesttype].clazz.newInstance();
             } catch (InstantiationException | IllegalAccessException e) {
                 // unpossible
                 e.printStackTrace();
@@ -162,7 +162,7 @@ public enum IronChestType {
     }
 
     public static IronChestType[] getAllSortedByTier() {
-        IronChestType[] vals = getAll();
+        IronChestType[] vals = VALUES;
 
         Arrays.sort(vals, new Comparator<IronChestType>() {
 
@@ -177,7 +177,7 @@ public enum IronChestType {
     public static IronChestType[] getAllByTier(int i) {
         HashSet<IronChestType> vals = new HashSet<IronChestType>();
 
-        for (IronChestType typ : values()) {
+        for (IronChestType typ : VALUES) {
             if (typ.tier == i) {
                 vals.add(typ);
             }
@@ -291,7 +291,7 @@ public enum IronChestType {
     }
 
     public static int validateMeta(int i) {
-        if (i < values().length && values()[i].size > 0) {
+        if (i < VALUES.length && VALUES[i].size > 0) {
             return i;
         } else {
             return 0;
