@@ -162,15 +162,8 @@ public enum IronChestType {
     }
 
     public static IronChestType[] getAllSortedByTier() {
-        IronChestType[] vals = VALUES;
-
-        Arrays.sort(vals, new Comparator<IronChestType>() {
-
-            public int compare(IronChestType a, IronChestType b) {
-                return a.tier.compareTo(b.tier);
-            }
-        });
-
+        IronChestType[] vals = values();
+        Arrays.sort(vals, Comparator.comparing(a -> a.tier));
         return vals;
     }
 
